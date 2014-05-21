@@ -12,4 +12,11 @@
  *= require_tree .
  */
 
+// navigation
+$navbar-default-bg: #282828; // dark gray
+$navbar-default-color: white;
+$navbar-default-link-color: white;
+$navbar-default-link-hover-color: #E20077; // pink
+$navbar-default-link-active-color: #E20077; // pink
+
 @import "bootstrap";
