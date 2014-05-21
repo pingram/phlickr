@@ -25,4 +25,21 @@
     </form>
   </div>
 
+  <div class="row">
+    <form role="form"
+      class="col-md-3"
+      action="<%= session_url %>"
+      method="post">
+      <%= auth_token_input %>
+      <input type="hidden"
+        name="guest"
+        value="true">
+      <div class="form-group">
+        <input type="submit"
+          class="btn btn-lg btn-primary"
+          value="Use Guest Account">
+      </div>
+    </form>
+  </div>
+
 </div>
