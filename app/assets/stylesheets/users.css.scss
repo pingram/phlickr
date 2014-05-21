@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#profile-pic {
+img#profile-pic {
   background: blue;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   position: relative;
-  top: 100px;
-  left: 20px;
+  top: 90px;
+  left: 10px;
 }
 
 div#cover-photo {
@@ -22,17 +22,17 @@ div#cover-photo {
 // TODO: for some reason position: relative is getting overriden
 h1#profile-name {
   color: white;
-  postion: relative;
-  top: 100px;
-  left: 100px;
+  position: relative;
+  top: -30px;
+  left: 145px;
+  font-weight: bold;
 }
 
 h4#profile-username {
   color: white;
   position: relative;
-  top: -10px;
-  left: 140px;
-  font-weight: bold;
+  top: -35px;
+  left: 145px;
 }
 
 #profile-photostream > img {
