@@ -1,4 +1,17 @@
-<h1>photo show view!</h1>
+<div id="photo-show-holder">
+  <div class="img-container">
+    <img src="<%= photo.escape('url') %>">
+  </div>
+</div>
 
-ID: <%= photo.id %>
-user_id: <%= photo.escape('url') %>
+<div id="photo-show-sidebar">
+  <h3><div class="glyphicon glyphicon-remove"></div></h3>
+  <div class="row">
+    <h3 class="col-md-3 col-md-offset-1">Username</h3>
+  </div>
+  <div class="row">
+    <p class="col-md-11 col-md-offset-1">
+      <%= photo.escape('description') %>
+    </p>
+  </div>
+</div>
