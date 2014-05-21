@@ -13,11 +13,3 @@ test:
   username: phil
   pool: 5
   timeout: 5000
-
-production:
-  adapter: postgresql
-  database: phlickr_production
-  host: localhost
-  username: phil
-  pool: 5
-  timeout: 5000

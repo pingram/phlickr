@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= render partial: "layouts/navbar" %>
+
+  <%= render "layouts/errors" %>
+
+  <%= yield %>
 
 </body>
 </html>
