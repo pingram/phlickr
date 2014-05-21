@@ -17,6 +17,10 @@ gem 'rake'
 gem 'bcrypt'
 gem 'serialize_json-rails'
 
+gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :doc do
   gem 'sdoc', require: false
 end
