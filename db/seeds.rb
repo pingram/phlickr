@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
+
+Photo.create!(
+  user_id: 1,
+  description: 'My first photo!',
+  url: "http://been-seen.com/wp-content/uploads/Cool-Tent-Designs-We-Love-Main.jpg")

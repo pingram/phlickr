@@ -7,6 +7,7 @@
 #  description :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  url         :string(255)
 #
 
 require 'spec_helper'

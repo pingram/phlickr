@@ -5,10 +5,11 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
 
   routes: {
     '': 'userProfile',
-    'profile': 'userProfile'
+    'profile': 'userProfile',
+    'photos/:id': 'photoShow'
   },
 
-  userProfile: function() {
+  userProfile: function () {
     // TODO: change this to a class method
     var router = this;
     Phlickr.Models.User.prototype.getCurrentUser(function(model) {
@@ -20,8 +21,17 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     });
   },
 
+  photoShow: function (id) {
+    var photo = new Phlickr.Models.Photo({ id: id })
+    photo.fetch();
+    console.log('route to user profile');
+    var view = new Phlickr.Views.PhotoShow({
+      model: photo
+    });
+    this._swapView(view);
+  },
 
-  _swapView: function(view) {
+  _swapView: function (view) {
     if (this._currentView) {
       this._currentView.remove();
     }
