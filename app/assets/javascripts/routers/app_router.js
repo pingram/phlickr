@@ -9,11 +9,15 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   userProfile: function() {
-    console.log('route to user profile');
-    var view = new Phlickr.Views.UserProfile({
-
+    // TODO: change this to a class method
+    var router = this;
+    Phlickr.Models.User.prototype.getCurrentUser(function(model) {
+      console.log('route to user profile');
+      var view = new Phlickr.Views.UserProfile({
+        model: model
+      });
+      router._swapView(view);
     });
-    this._swapView(view);
   },
 
 
