@@ -16,12 +16,26 @@ div#cover-photo {
   padding-top: 0px;
   height: 220px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 // TODO: for some reason position: relative is getting overriden
 h1#profile-name {
   color: white;
-  postion: absolute;
+  postion: relative;
   top: 100px;
   left: 100px;
+}
+
+h4#profile-username {
+  color: white;
+  position: relative;
+  top: -10px;
+  left: 140px;
+  font-weight: bold;
+}
+
+#profile-photostream > img {
+  max-height: 290px;
+  margin: 5px;
 }
