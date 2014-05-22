@@ -5,13 +5,20 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
 
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.user, 'sync', this.render);
+
+    var descriptionView = new Phlickr.Views.Description({
+      model: this.model
+    });
+    this.addSubview('.photo-description', descriptionView);
   },
 
   template: JST['photos/show'],
 
   events: {
     'click div.glyphicon-remove': 'closeView',
-    'click button.delete-photo': 'deletePhoto'
+    'click button.delete-photo': 'deletePhoto',
+    'click p.open-form': 'openForm',
+    'click #photo-show-holder': 'closeForm'
   },
 
   render: function() {
@@ -28,6 +35,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
       user: this.user
     });
     this.$el.html(renderedContent);
+    this.renderSubviews();
 
     return this;
   },
@@ -55,5 +63,17 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     Backbone.history.history.back({
       trigger: true
     })
-  }
+  },
+
+  openForm: function (event) {
+    event.preventDefault();
+    this.subviews()['.photo-description'][0].open = true;
+    this.renderSubviews();
+  },
+
+  closeForm: function (event) {
+    event.preventDefault();
+    this.subviews()['.photo-description'][0].open = false;
+    this.renderSubviews();
+  },
 });
