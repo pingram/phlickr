@@ -1,4 +1,4 @@
-Phlickr.Views.PhotoShow = Backbone.View.extend({
+Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.model = options.model;
     this.user = new Phlickr.Models.User();

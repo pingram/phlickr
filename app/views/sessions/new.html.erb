@@ -1,47 +1,51 @@
-<div class="container">
-
-  <h1>Sign In</h1>
-
+<div class="container auth-page">
   <div class="row">
-    <form role="form"
-      class="col-md-3"
-      action="<%= session_url %>"
-      method="post">
-      <%= auth_token_input %>
-      <div class="form-group">
-        <label>
-          Username<br>
-          <input type="text" class="form-control" name="user[username]">
-        </label>
-      </div>
-      <div class="form-group">
-        <label>
-          Password<br>
-          <input type="password" class="form-control" name="user[password]">
-        </label>
-      </div>
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Login">
-        <a href="<%= new_user_url %>">New to Phlickr?</a>
-      </div>
-    </form>       
-  </div>
+    <div class='col-md-offset-4'>
 
-  <div class="row">
-    <form role="form"
-      class="col-md-3"
-      action="<%= session_url %>"
-      method="post">
-      <%= auth_token_input %>
-      <input type="hidden"
-        name="guest"
-        value="true">
-      <div class="form-group">
-        <input type="submit"
-          class="btn btn-lg btn-primary"
-          value="Use Guest Account">
-      </div>
-    </form>
-  </div>
+      <h1>Sign In</h1>
 
+      <div class="row">
+        <form role="form"
+          class="col-md-3"
+          action="<%= session_url %>"
+          method="post">
+          <%= auth_token_input %>
+          <div class="form-group">
+            <label>
+              Username<br>
+              <input type="text" class="form-control" name="user[username]">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              Password<br>
+              <input type="password" class="form-control" name="user[password]">
+            </label>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Login">
+            <a href="<%= new_user_url %>">New to Phlickr?</a>
+          </div>
+        </form>       
+      </div>
+
+      <div class="row">
+        <form role="form"
+          class="col-md-3"
+          action="<%= session_url %>"
+          method="post">
+          <%= auth_token_input %>
+          <input type="hidden"
+            name="guest"
+            value="true">
+          <div class="form-group">
+            <input type="submit"
+              class="btn btn-lg btn-primary"
+              value="Use Guest Account">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </div>

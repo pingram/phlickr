@@ -42,3 +42,7 @@ img[data-photo-id]:hover:not(#profile-pic) {
   -webkit-box-shadow: 1px 1px 5px #999;
   box-shadow: 1px 1px 5px #999;
 }
+
+.auth-page label {
+  color: #282828; // dark gray
+}

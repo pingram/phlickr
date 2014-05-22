@@ -6,15 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# profile pic
-prof_pic1 = Photo.create!(
-  user_id: 1,
-  description: 'prof pic',
-  url: 'https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg')
-
-User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User', profile_photo_id: prof_pic1.id)
-User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
-
 photo_urls = [
   "http://fc09.deviantart.net/fs71/i/2012/230/b/e/grassy_field_sunset___free_stock_by_kevron2001-d5blgkr.jpg",
   "http://www.techiemania.com/wp-content/uploads/2010/09/freebie-images-free-stock-images-plugin.jpg",
@@ -30,6 +21,15 @@ photo_urls.each_with_index do |photo_url, i|
     description: "stock photo number #{i}",
     url: photo_url)
 end
+
+# profile pic
+prof_pic1 = Photo.create!(
+  user_id: 1,
+  description: 'prof pic',
+  url: 'https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg')
+
+User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User', profile_photo_id: prof_pic1.id)
+User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
 
 Photo.create!(
     user_id: 2,
