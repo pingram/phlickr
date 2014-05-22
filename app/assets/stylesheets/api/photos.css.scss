@@ -47,3 +47,19 @@ div.glyphicon-remove {
   /* TODO: this could be problematic later */
   margin-right: 0px;
 }
+
+button[data-target="#confirm-delete"] {
+  color: white;
+}
+
+button[data-target="#confirm-delete"]:hover {
+  color: white;
+}
+
+.modal-dialog {
+  width: 250px;
+}
+
+.modal-title, .modal-body {
+  color: #212124; //dark gray
+}
