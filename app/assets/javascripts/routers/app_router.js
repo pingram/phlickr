@@ -22,7 +22,8 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   photoShow: function (id) {
-    var photo = new Phlickr.Models.Photo({ id: id })
+    var photo = new Phlickr.Models.Photo({ id: id });
+    var user = new Phlickr.Models.User();
     photo.fetch();
     console.log('route to user profile');
     var view = new Phlickr.Views.PhotoShow({

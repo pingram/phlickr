@@ -7,7 +7,9 @@
 <div id="photo-show-sidebar">
   <h3><div class="glyphicon glyphicon-remove"></div></h3>
   <div class="row">
-    <h3 class="col-md-3 col-md-offset-1">Username</h3>
+    <h3 class="col-md-3 col-md-offset-1">
+      <%= user.escape('fname') + ' ' + user.escape('lname') %>
+    </h3>
   </div>
   <div class="row">
     <p class="col-md-11 col-md-offset-1">
