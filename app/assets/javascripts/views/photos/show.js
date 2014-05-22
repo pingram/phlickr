@@ -10,7 +10,8 @@ Phlickr.Views.PhotoShow = Backbone.View.extend({
   template: JST['photos/show'],
 
   events: {
-    'click div.glyphicon-remove': 'closeView'
+    'click div.glyphicon-remove': 'closeView',
+    'click button.delete-photo': 'deletePhoto'
   },
 
   render: function() {
@@ -32,6 +33,25 @@ Phlickr.Views.PhotoShow = Backbone.View.extend({
   },
 
   closeView: function () {
+    Backbone.history.history.back({
+      trigger: true
+    })
+  },
+
+  deletePhoto: function(event) {
+    event.preventDefault();
+    var photo = this.model;
+    
+    // needed to force modal removal from backboneXXX
+    $('#confirm-delete').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+
+    photo.destroy({
+      success: function () {
+        console.log("photo " + photo.id + " deleted");
+      }
+    });
     Backbone.history.history.back({
       trigger: true
     })

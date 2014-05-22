@@ -36,10 +36,10 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   current_user.photos.find(params[:id]).try(:destroy)
-  #   render json: {}
-  # end
+  def destroy
+    current_user.photos.find(params[:id]).try(:destroy)
+    render json: @photo
+  end
 
   private
   def photo_params
