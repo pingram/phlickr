@@ -6,9 +6,13 @@ Phlickr.Views.PhotoShow = Backbone.View.extend({
 
   template: JST['photos/show'],
 
+  events: {
+    'click div.glyphicon-remove': 'closeView'
+  },
+
   render: function() {
     console.log('render photos/show')
-    
+
     // TODO: render spinner here if no photo
     var renderedContent = this.template({
       photo: this.model
@@ -16,5 +20,9 @@ Phlickr.Views.PhotoShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  closeView: function () {
+    window.history.back();
   }
 });

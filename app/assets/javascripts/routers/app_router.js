@@ -4,7 +4,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'userProfile',
+    // '': 'userProfile', // for some reason this wasn't working with back requests
     'profile': 'userProfile',
     'photos/:id': 'photoShow'
   },
