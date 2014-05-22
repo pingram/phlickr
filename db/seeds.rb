@@ -6,14 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
-User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
-
 # profile pic
-Photo.create!(
+prof_pic1 = Photo.create!(
   user_id: 1,
   description: 'prof pic',
   url: 'https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg')
+
+User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User', profile_photo_id: prof_pic1.id)
+User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
 
 photo_urls = [
   "http://fc09.deviantart.net/fs71/i/2012/230/b/e/grassy_field_sunset___free_stock_by_kevron2001-d5blgkr.jpg",

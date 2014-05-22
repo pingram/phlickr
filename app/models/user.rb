@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
 
   has_many :photos
+  belongs_to :profile_photo,
+    class_name: "Photo",
+    foreign_key: :profile_photo_id,
+    primary_key: :id
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

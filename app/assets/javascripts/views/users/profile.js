@@ -1,21 +1,17 @@
 Phlickr.Views.UserProfile = Backbone.View.extend({
   initialize: function (options) {
     this.model = options.model
-    this.collection = new Phlickr.Collections.UserPhotos([], {
-      user_id: options.model.id
-    })
-
-    this.collection.fetch();
-    this.listenTo(this.collection, 'sync', this.render);
   },
 
   template: JST['users/profile'],
 
+  // TODO: refactor this later so that photos are actual Phlickr photos
   render: function() {
     console.log('render users/profile')
     var renderedContent = this.template({
       user: this.model,
-      photos: this.collection
+      profilePhoto: this.model.get('profile_photo'),
+      photos: this.model.get('photos')
     });
     this.$el.html(renderedContent);
     return this;
