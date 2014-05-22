@@ -46,3 +46,22 @@ img[data-photo-id]:hover:not(#profile-pic) {
 .auth-page label {
   color: #282828; // dark gray
 }
+
+
+/* background image setup */
+.auth-page {
+  background: url(http://www.mrwallpaper.com/wallpapers/Tropical-Beach-Background-2560x1600.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
+.auth-row {
+  position: relative;
+  top: 100px;
+}
