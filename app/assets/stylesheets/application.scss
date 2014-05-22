@@ -25,3 +25,20 @@ $navbar-border-radius: 0px;
 $text-color: white;
 
 @import "bootstrap";
+
+img[data-photo-id] {
+  cursor: pointer;
+  cursor: hand; /* needed for cross-browser support */
+}
+
+img[data-photo-id]:not(#profile-pic) {
+  padding: 5px; border: solid 1px #EFEFEF;
+}
+
+/* from: http://www.cvwdesign.com/txp/article/395/css3-box-shadow-and-image-hover-effects */
+img[data-photo-id]:hover:not(#profile-pic) {
+  border: solid 1px #CCC;
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+}

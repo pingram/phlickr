@@ -41,6 +41,8 @@ div.glyphicon-remove {
   position: absolute;
   top: 15px;
   right: 15px;
+  cursor: pointer;
+  cursor: hand; /* needed for cross-browser support */
 }
 
 #photo-show-sidebar > div.row {
