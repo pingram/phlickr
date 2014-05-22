@@ -32,13 +32,8 @@ Phlickr.Views.PhotoShow = Backbone.View.extend({
   },
 
   closeView: function () {
-    // debugger
-    Backbone.history.navigate('profile', {trigger: true})
-      // Backbone.history.history.back({
-      //   trigger: true
-      // })
-    // window.history.back({
-    //   trigger: true
-    // });
+    Backbone.history.history.back({
+      trigger: true
+    })
   }
 });
