@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
+User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
 
 # profile pic
 Photo.create!(
@@ -29,3 +30,8 @@ photo_urls.each_with_index do |photo_url, i|
     description: "stock photo number #{i}",
     url: photo_url)
 end
+
+Photo.create!(
+    user_id: 2,
+    description: "stock photo for user 2",
+    url: photo_urls[0])
