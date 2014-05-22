@@ -1,7 +1,7 @@
 <div id="cover-photo" class="cover-photo wviewvert" style="background-image: url(https://s.yimg.com/pw/images/coverphoto04_h.jpg.v2); top: -35px;">
 
   <img id="profile-pic"
-    src="<%= profilePhoto.url %>">
+    src="<%= profilePhoto.url %>" data-photo-id="<%= profilePhoto.id %>">
 
   <h1 id="profile-name" class="profile">
     <%= user.escape('fname') %> <%= user.escape('lname') %>
@@ -9,7 +9,6 @@
   <h4 id="profile-username"><%= user.escape('username')%></h4>
 
 </div>
-
 
 
 <div id="profile-photostream">

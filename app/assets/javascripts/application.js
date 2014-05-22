@@ -26,7 +26,8 @@
 
 var installHandlers = function () {
   $('img').on('click', function (event) {
+    var photoId = $(event.currentTarget).data('photo-id')
     console.log('image clicked');
-    Backbone.history.navigate('photos/' + 1, true)
+    Backbone.history.navigate('photos/' + photoId, true)
   })
 };
