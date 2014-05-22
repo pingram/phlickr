@@ -1,6 +1,7 @@
 Phlickr.Routers.AppRouter = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl
+    this.history = [];
   },
 
   routes: {
@@ -13,6 +14,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     // TODO: change this to a class method
     var router = this;
     Phlickr.Models.User.prototype.getCurrentUser(function(model) {
+      // debugger
       console.log('route to user profile');
       var view = new Phlickr.Views.UserProfile({
         model: model
@@ -33,10 +35,20 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
+    // debugger
+    // if (this._prevPage && this._prevPage !== document.URL) {
+    //   this._prevPage = document.URL;
+    // } else if (!this._prevPage) {
+    //   this._prevPage = document.URL;
+    // }
+    // debugger
+
+    
     if (this._currentView) {
       this._currentView.remove();
     }
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
+    installHandlers();
   }
 });

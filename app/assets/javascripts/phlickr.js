@@ -8,7 +8,7 @@ window.Phlickr = {
     new Phlickr.Routers.AppRouter({
       $rootEl: $('#content')
     });
-    Backbone.history.start();
+    Backbone.history.start({ })//pushState: true });
   }
 };
 

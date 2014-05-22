@@ -23,3 +23,10 @@
 //= require_tree ./routers
 //= require_tree .
 //= require bootstrap
+
+var installHandlers = function () {
+  $('img').on('click', function (event) {
+    console.log('image clicked');
+    Backbone.history.navigate('photos/' + 1, true)
+  })
+};
