@@ -19,22 +19,15 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
-  # def update
-  #   @photo = current_user.photos.find(params[:id])
+  def update
+    @photo = Photo.find(params[:id])
 
-
-  #   if params[:newMemberEmail]
-  #     email = params[:newMemberEmail]
-  #     new_member = User.find_by_email(email)
-  #     new_member && !@photo.members.include?(new_member) && @photo.members << new_member
-  #   end
-
-  #   if @photo.update_attributes(photo_params)
-  #     render partial: "api/photos/photo", locals: { photo: @photo }
-  #   else
-  #     render json: { errors: @photo.errors.full_messages }, status: 422
-  #   end
-  # end
+    if @photo.update_attributes(photo_params)
+      render json: @photo
+    else
+      render json: { errors: @photo.errors.full_messages }, status: 422
+    end
+  end
 
   def destroy
     current_user.photos.find(params[:id]).try(:destroy)
@@ -43,6 +36,6 @@ class Api::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:user_id, :description, :description, :url)
+    params.require(:photo).permit(:user_id, :description, :url)
   end
 end

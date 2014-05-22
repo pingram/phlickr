@@ -73,7 +73,26 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
 
   closeForm: function (event) {
     event.preventDefault();
+    this.submit();
     this.subviews()['.photo-description'][0].open = false;
     this.renderSubviews();
   },
+
+  // TODO: add ability to press enter to have it update
+  submit: function () {
+    var newDescription = $('.photo-description').find('input').val();
+    
+    if (newDescription !== this.model.get('description')) {
+      this.model.set('description', newDescription);
+
+      this.model.save([], {
+        success: function () {
+          console.log('photo saved successfully to DB');
+        },
+        error: function () {
+          console.log('error saving photo to DB');
+        }
+      })
+    }
+  }
 });
