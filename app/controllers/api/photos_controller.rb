@@ -3,17 +3,17 @@ class Api::PhotosController < ApplicationController
     render :new
   end
 
-  def create
-    @photo = Photo.new(photo_params)
-    @photo.user_id = current_user.id
+  # def create
+  #   @photo = Photo.new(photo_params)
+  #   @photo.user_id = current_user.id
 
-    if @photo.save
-      redirect_to new_session_url
-    else
-      flash.now[:errors] = @photo.errors.full_messages
-      render action: 'new'
-    end
-  end
+  #   if @photo.save
+  #     redirect_to new_session_url
+  #   else
+  #     flash.now[:errors] = @photo.errors.full_messages
+  #     render action: 'new'
+  #   end
+  # end
 
   def index
     @user = User.find(params[:user_id])
@@ -26,14 +26,16 @@ class Api::PhotosController < ApplicationController
     render json: @photo
   end
 
-  # def create
-  #   @photo = current_user.photos.build(photo_params)
-  #   if @photo.save
-  #     render partial: "api/photos/photo", locals: { photo: @photo }
-  #   else
-  #     render json: { errors: @photo.errors.full_messages }, status: 422
-  #   end
-  # end
+  def create
+    fail
+    @photo = current_user.photos.build(photo_params)
+
+    if @photo.save
+      render json: @photo
+    else
+      render json: { errors: @photo.errors.full_messages }, status: 422
+    end
+  end
 
   def update
     @photo = Photo.find(params[:id])
