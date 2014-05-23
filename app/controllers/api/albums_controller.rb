@@ -9,10 +9,10 @@ class Api::AlbumsController < ApplicationController
   #   render json: @albums
   # end
 
-  # def show
-  #   @album = Album.find(params[:id])
-  #   render partial: "api/albums/album", locals: { album: @album }
-  # end
+  def show
+    @album = Album.find(params[:id])
+    render partial: "api/albums/album", locals: { album: @album }
+  end
 
   # def create
   #   @album = current_user.albums.build(:file => params[:album])
