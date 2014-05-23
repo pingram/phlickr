@@ -5,11 +5,7 @@ class Api::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-
-    fail
-
-    # @photo.user_id = current_user.id
-    
+    @photo.user_id = current_user.id
 
     if @photo.save
       redirect_to new_session_url
