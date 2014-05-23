@@ -48,40 +48,4 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
       },
     });
   },
-
-
-
-  // createPhoto: function (event) {
-  //   event.preventDefault();
-
-  //   var file = $('#photo_file')[0].files[0];
-  //   var reader = new FileReader();
-
-  //   reader.onload = function(e) {
-  //     // you need to send e.target.result in your $.ajax request
-  //     debugger
-  //     console.log(this.result);
-  //     $.ajax({
-  //       url: "api/photos",
-  //       type: "POST",
-  //       data: e.target.result,
-  //       success: function () {
-  //         console.log("successful");
-  //       }
-  //     });
-  //   }
-
-  //   reader.readAsDataURL(file);
-
-    
-
-  //   // var params = $(event.currentTarget).serializeJSON()["photo"];
-  //   // var newPhoto = new Phlickr.Models.Photo(params);
-
-  //   // newPhoto.save({}, {
-  //   //   success: function (resp) {
-  //   //     Backbone.history.navigate('profile', { trigger: true });
-  //   //   }
-  //   // });
-  // }
 });
