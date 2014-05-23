@@ -27,8 +27,7 @@ class Api::PhotosController < ApplicationController
   end
 
   def create
-    fail
-    @photo = current_user.photos.build(photo_params)
+    @photo = current_user.photos.build(:file => params[:photo])
 
     if @photo.save
       render json: @photo

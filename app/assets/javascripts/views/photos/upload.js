@@ -26,7 +26,7 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     var reader = new FileReader();
     reader.onload = function(e) {
       console.log(e.target.result);
-      photo.set({ file: e.target.result });
+      photo.set({ photo: e.target.result });
     }
     reader.onerror = function(stuff) {
       console.log("error", stuff)
@@ -40,7 +40,7 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.set(attrs);
-    debugger
+
     this.model.save(null, {
       success: function (attribute) {
         console.log("file uploaded successfully!");
