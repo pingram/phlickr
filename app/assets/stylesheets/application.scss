@@ -69,3 +69,8 @@ img[data-photo-id]:hover:not(#profile-pic) {
 a.link-other-login {
   color: #282828; // dark gray
 }
+
+.navbar {
+  background: #000;  /* fallback for older browsers */
+  background:rgba(0,0,0,0.8);   /* for latest browsers */
+}

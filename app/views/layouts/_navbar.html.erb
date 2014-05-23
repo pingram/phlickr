@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default">
-  <div class="container">
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
 
     <b><a class="navbar-brand" href="#">Phlickr</a></b>
 
@@ -24,15 +24,13 @@
     </ul>
     <% end %>
 
-    <ul class="nav navbar-right">
-      <li>
-        <% if logged_in? %>
-          <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-sm btn-default" } %>
-        <% else %>
-          <%= button_to "Sign In", new_session_url, { method: :get, class: "btn btn-sm btn-default" } %>
-        <% end %>
-      </li>
-    </ul>
+    <div class="navbar-form navbar-right">
+      <% if logged_in? %>
+        <%= link_to "Log out", session_url, { method: :delete, class: "btn btn-md btn-link" } %>
+      <% else %>
+        <%= link_to "Sign In", new_session_url, { method: :get, class: "btn btn-sm btn-default" } %>
+      <% end %>
+    </div>
 
   </div>
 </nav>
