@@ -21,6 +21,10 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     'click #photo-show-holder': 'closeForm'
   },
 
+  centerImage: function () {
+    alert('hi');
+  },
+
   render: function() {
     console.log('render photos/show')
 
@@ -36,8 +40,15 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.renderSubviews();
+    this.$('img.main-show-img').load(this.mainImageLoad);
 
     return this;
+  },
+
+  mainImageLoad: function () {
+    var photo = $('.main-show-img')
+    photo.css('margin-top', -photo.height() / 2);
+    photo.css('margin-left', -photo.width() / 2);
   },
 
   closeView: function () {

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require phlickr
 //= require_tree ../templates
 //= require_tree ./models
@@ -21,7 +22,6 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-//= require bootstrap
 
 var installHandlers = function () {
   $('img').on('click', function (event) {

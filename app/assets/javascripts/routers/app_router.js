@@ -35,15 +35,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    // debugger
-    // if (this._prevPage && this._prevPage !== document.URL) {
-    //   this._prevPage = document.URL;
-    // } else if (!this._prevPage) {
-    //   this._prevPage = document.URL;
-    // }
-    // debugger
-
-    
     if (this._currentView) {
       this._currentView.remove();
     }

@@ -25,16 +25,19 @@ div#photo-show-sidebar {
   height: auto;
 }
 
-div.img-container {
+
+img.main-show-img {
     position: absolute;
     top: 50%;
     left: 50%;
 }
 
+/*
 .img-container > img {
   margin-top: -50%;
   margin-left: -50%;
 }
+*/
 
 div.glyphicon-remove {
   color: #F1F8C1;
