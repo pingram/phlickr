@@ -5,14 +5,18 @@ class Api::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+
     fail
 
-    # if @photo.save
-    #   redirect_to new_session_url
-    # else
-    #   flash.now[:errors] = @photo.errors.full_messages
-    #   render action: 'new'
-    # end
+    # @photo.user_id = current_user.id
+    
+
+    if @photo.save
+      redirect_to new_session_url
+    else
+      flash.now[:errors] = @photo.errors.full_messages
+      render action: 'new'
+    end
   end
 
   def index
