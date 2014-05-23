@@ -13,6 +13,6 @@
 class Album < ActiveRecord::Base
   validates :user_id, :name, presence: true
 
-  has_many :albumphotos
-  has_many :photos, through: :albumphotos
+  has_many :album_photos, inverse_of: :album
+  has_many :photos, through: :album_photos, source: :photo, inverse_of: :albums
 end

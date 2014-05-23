@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+guest = User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
+User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
+
+album1 = Album.create!(user_id: guest.id, name: 'My first album!', description: 'album description...')
+
 photo_urls = [
   "http://fc09.deviantart.net/fs71/i/2012/230/b/e/grassy_field_sunset___free_stock_by_kevron2001-d5blgkr.jpg",
   "http://www.techiemania.com/wp-content/uploads/2010/09/freebie-images-free-stock-images-plugin.jpg",
@@ -16,10 +21,11 @@ photo_urls = [
 ]
 
 photo_urls.each_with_index do |photo_url, i|
-  Photo.create!(
+  new_photo = album1.photos.build(
     user_id: 1,
-    description: "stock photo number #{i}",
+    description: "stock photo number #{i + 1}",
     url: photo_url)
+  new_photo.save!
 end
 
 # profile pic
@@ -28,8 +34,8 @@ prof_pic1 = Photo.create!(
   description: 'prof pic',
   url: 'https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg')
 
-User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User', profile_photo_id: prof_pic1.id)
-User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
+guest.profile_photo_id = prof_pic1.id
+guest.save!
 
 Photo.create!(
     user_id: 2,

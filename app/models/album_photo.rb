@@ -10,8 +10,8 @@
 #
 
 class AlbumPhoto < ActiveRecord::Base
-  validates :photo_id, :album_id, presence: true
+  validates :photo, :album, presence: true
 
-  belongs_to :photo
-  belongs_to :album
+  belongs_to :photo, inverse_of: :album_photos
+  belongs_to :album, inverse_of: :album_photos
 end
