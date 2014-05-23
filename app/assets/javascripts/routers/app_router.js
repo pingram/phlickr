@@ -7,7 +7,8 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     '': 'userProfile', // for some reason this wasn't working with back requests
     'profile': 'userProfile',
-    'photos/:id': 'photoShow'
+    'photos/:id': 'photoShow',
+    'upload': 'photoUpload'
   },
 
   userProfile: function () {
@@ -31,6 +32,12 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     var view = new Phlickr.Views.PhotoShow({
       model: photo
     });
+    this._swapView(view);
+  },
+
+  photoUpload: function () {
+    console.log('route to photo upload');
+    var view = new Phlickr.Views.PhotoUpload();
     this._swapView(view);
   },
 

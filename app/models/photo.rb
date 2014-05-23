@@ -23,9 +23,10 @@ class Photo < ActiveRecord::Base
   # This method associates the attribute ":_photo" with a file attachment
   has_attached_file :file,
     styles: {
-      thumb: '100x100>',
-      square: '200x200#',
-      medium: '300x300>'
+      original: '2400x1800>',
+      large: '1024x768>',
+      medium: '500x375>',
+      large_square: '150x150!'
     },
     whiny: false
 
