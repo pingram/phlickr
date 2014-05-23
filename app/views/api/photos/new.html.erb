@@ -1,0 +1,8 @@
+
+<%= form_for :photo, :html => { :multipart => true }, url: {action: "create"} do |f| %>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.file_field :file %>
+  </div>
+  <input type="submit" value="submit">
+<% end %>

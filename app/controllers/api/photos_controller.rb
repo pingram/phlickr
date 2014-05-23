@@ -1,4 +1,20 @@
 class Api::PhotosController < ApplicationController
+  def new
+    render :new
+  end
+
+  def create
+    @photo = Photo.new(photo_params)
+    fail
+
+    # if @photo.save
+    #   redirect_to new_session_url
+    # else
+    #   flash.now[:errors] = @photo.errors.full_messages
+    #   render action: 'new'
+    # end
+  end
+
   def index
     @user = User.find(params[:user_id])
     @photos = @user.photos
@@ -36,6 +52,6 @@ class Api::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:user_id, :description, :url)
+    params.require(:photo).permit(:user_id, :description, :url, :file)
   end
 end
