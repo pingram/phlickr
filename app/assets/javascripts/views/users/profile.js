@@ -7,6 +7,7 @@ Phlickr.Views.UserProfile = Backbone.View.extend({
 
   // TODO: refactor this later so that photos are actual Phlickr photos
   render: function() {
+    debugger
     console.log('render users/profile')
     var renderedContent = this.template({
       user: this.model,

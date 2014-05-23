@@ -15,22 +15,22 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
-  def index
-    @user = User.find(params[:user_id])
-    @photos = @user.photos
-    render json: @photos
-  end
+  # def index
+  #   @user = User.find(params[:user_id])
+  #   @photos = @user.photos
+  #   render json: @photos
+  # end
 
   def show
     @photo = Photo.find(params[:id])
-    render json: @photo
+    render partial: "api/photos/photo", locals: { photo: @photo }
   end
 
   def create
     @photo = current_user.photos.build(:file => params[:photo])
 
     if @photo.save
-      render json: @photo
+      render partial: "api/photos/photo", locals: { photo: @photo }
     else
       render json: { errors: @photo.errors.full_messages }, status: 422
     end
@@ -40,7 +40,7 @@ class Api::PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     if @photo.update_attributes(photo_params)
-      render json: @photo
+      render partial: "api/photos/photo", locals: { photo: @photo }
     else
       render json: { errors: @photo.errors.full_messages }, status: 422
     end
@@ -48,7 +48,7 @@ class Api::PhotosController < ApplicationController
 
   def destroy
     current_user.photos.find(params[:id]).try(:destroy)
-    render json: @photo
+    render partial: "api/photos/photo", locals: { photo: @photo }
   end
 
   private
