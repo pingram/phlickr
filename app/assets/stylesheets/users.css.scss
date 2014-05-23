@@ -38,3 +38,15 @@ h4#profile-username {
   max-height: 290px;
   margin: 5px;
 }
+
+/* background image setup */
+#cover-photo {
+  background: url(https://s.yimg.com/pw/images/coverphoto04_h.jpg.v2) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
