@@ -12,5 +12,6 @@ Phlickr::Application.routes.draw do
     get "users/profile", to: "users#profile"
     # resources :users, only: [:show]
     resources :photos, except: [:new, :edit]
+    resources :albums, except: [:new, :edit]
   end
 end

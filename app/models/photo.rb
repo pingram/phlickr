@@ -19,6 +19,8 @@ class Photo < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
+  has_many :albumphotos
+  has_many :albums, through: :albumphotos
 
   # This method associates the attribute ":_photo" with a file attachment
   has_attached_file :file,
