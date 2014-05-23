@@ -8,7 +8,9 @@
 </head>
 <body>
 
-  <%= render partial: "layouts/navbar" %>
+  <% if logged_in? %>
+    <%= render partial: "layouts/navbar" %>
+  <% end %>
 
   <%= render "layouts/errors" %>
 
