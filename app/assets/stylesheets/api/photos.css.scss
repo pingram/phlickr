@@ -11,6 +11,7 @@ div#photo-show-holder {
   bottom: 0;
   width: auto;
   height: auto;
+  z-index: 11;
 }
 
 // TODO: change left to pixels (same for above)
@@ -23,6 +24,7 @@ div#photo-show-sidebar {
   bottom: 0;
   width: auto;
   height: auto;
+  z-index: 11;
 }
 
 
