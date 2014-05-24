@@ -1,5 +1,5 @@
 Phlickr.Views.AlbumNew = Backbone.View.extend({
-  className: 'body-padded',
+  className: 'body-padded new-album-view-container',
   template: JST['albums/new'],
 
   initialize: function (options) {
@@ -10,7 +10,6 @@ Phlickr.Views.AlbumNew = Backbone.View.extend({
   },
 
   render: function () {
-    debugger
     var renderedContent = this.template({
       userPhotos: this.userPhotos,
       albumPhotos: this.albumPhotos
