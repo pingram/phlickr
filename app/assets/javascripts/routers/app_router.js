@@ -49,7 +49,8 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
       });
       photos.fetch();
       var view = new Phlickr.Views.Photostream({
-        user: userModel
+        user: userModel,
+        collection: photos
       });
       router._swapView(view);
     });

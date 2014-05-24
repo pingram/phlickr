@@ -2,9 +2,9 @@ Phlickr.Views.Photostream = Backbone.CompositeView.extend({
   template: JST['users/photostream'],
 
   initialize: function (options) {
-    this.collection = options.user.get('photos');
+    this.collection = options.collection;
     this.user = options.user;
-    // this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.render);
 
     var userProfileView = new Phlickr.Views.UserProfile({
       model: this.user
