@@ -6,7 +6,7 @@ img#profile-pic {
   height: 120px;
   width: 120px;
   position: relative;
-  top: 85px;
+  top: 105px;
   left: 10px;
   z-index: 3;
   border: 1px solid #7E6D5A;
@@ -17,7 +17,7 @@ img#profile-pic {
 div#cover-photo {
   margin-top: 0px;
   padding-top: 0px;
-  height: 215px;
+  height: 235px;
   width: 100%;
   margin-bottom: 10px;
 }
@@ -26,16 +26,18 @@ div#cover-photo {
 h1#profile-name {
   color: white;
   position: relative;
-  top: -35px;
+  top: -25px;
   left: 145px;
   font-weight: bold;
 }
 
 h4#profile-username {
   color: white;
+  font-size: 13px;
+  font-weight: 600;
   position: relative;
-  top: -40px;
-  left: 145px;
+  top: -35px;
+  left: 150px;
 }
 
 #profile-photostream > img {
@@ -79,14 +81,6 @@ li.profile-nav-left {
 }
 
 .profile-nav-left {
-  border-left: 1px solid black;
-  margin: 0px;
-}
-
-.profile-nav-left {
-  border-left: 1px solid black;
-}
-
-.profile-nav-left:last-of-type {
   border-right: 1px solid black;
+  margin: 0px;
 }
