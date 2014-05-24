@@ -5,8 +5,9 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'userProfile', // for some reason this wasn't working with back requests
+    '': 'photostream', // for some reason this wasn't working with back requests
     'profile': 'photostream',
+    'photostream': 'photostream',
     'photos/:id': 'photoShow',
     'upload': 'photoUpload',
     'albums': 'albumIndex',
@@ -43,6 +44,9 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     // TODO: change this to a class method 2
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
       console.log('route to user profile');
+      // var photos = new Phlickr.Collections.PhotostreamPhotos(userModel.id);
+      // debugger
+      // photos.fetch();
       var view = new Phlickr.Views.Photostream({
         user: userModel
       });
@@ -50,17 +54,17 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     });
   },
 
-  userProfile: function () {
-    // TODO: change this to a class method
-    var router = this;
-    Phlickr.Models.User.prototype.getCurrentUser(function(model) {
-      console.log('route to user profile');
-      var view = new Phlickr.Views.UserProfile({
-        model: model
-      });
-      router._swapView(view);
-    });
-  },
+  // userProfile: function () {
+  //   // TODO: change this to a class method
+  //   var router = this;
+  //   Phlickr.Models.User.prototype.getCurrentUser(function(model) {
+  //     console.log('route to user profile');
+  //     var view = new Phlickr.Views.UserProfile({
+  //       model: model
+  //     });
+  //     router._swapView(view);
+  //   });
+  // },
 
   photoShow: function (id) {
     var photo = new Phlickr.Models.Photo({ id: id });
