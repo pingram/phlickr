@@ -1,10 +1,16 @@
-Phlickr.Views.AlbumIndex = Backbone.View.extend({
-  className: 'body-padded',
+Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   template: JST['albums/index'],
 
   initialize: function (options) {
     this.collection = options.collection;
+    this.user = options.user;
+    debugger
     this.listenTo(this.collection, 'sync', this.render);
+
+    var userProfileView = new Phlickr.Views.UserProfile({
+      user: this.user
+    })
+    this.addSubview('.user-profile', userProfileView);
   },
 
   render: function () {
@@ -13,6 +19,7 @@ Phlickr.Views.AlbumIndex = Backbone.View.extend({
       albums: this.collection
     });
     this.$el.html(renderedContent);
+    this.renderSubviews();
     return this;
   }
 })
