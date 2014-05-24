@@ -56,6 +56,7 @@ Backbone.CompositeView = Backbone.View.extend({
         subview.delegateEvents();
       });
     });
+    installHandlers();
   },
 
   subviews: function () {
