@@ -6,7 +6,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
 
   routes: {
     '': 'userProfile', // for some reason this wasn't working with back requests
-    'profile': 'userProfile',
+    'profile': 'photostream',
     'photos/:id': 'photoShow',
     'upload': 'photoUpload',
     'albums': 'albumIndex',
@@ -38,17 +38,17 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  // photostream: function () {
-  //   var router = this;
-  //   // TODO: change this to a class method 2
-  //   Phlickr.Models.User.prototype.getCurrentUser(function(user) {
-  //     console.log('route to user profile');
-  //     var view = new Phlickr.Views.UserProfile({
-  //       user: user
-  //     });
-  //     router._swapView(view);
-  //   });
-  // },
+  photostream: function () {
+    var router = this;
+    // TODO: change this to a class method 2
+    Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
+      console.log('route to user profile');
+      var view = new Phlickr.Views.Photostream({
+        user: userModel
+      });
+      router._swapView(view);
+    });
+  },
 
   userProfile: function () {
     // TODO: change this to a class method

@@ -4,11 +4,10 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.collection = options.collection;
     this.user = options.user;
-    debugger
     this.listenTo(this.collection, 'sync', this.render);
 
     var userProfileView = new Phlickr.Views.UserProfile({
-      user: this.user
+      model: this.user
     })
     this.addSubview('.user-profile', userProfileView);
   },
