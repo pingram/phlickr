@@ -15,11 +15,11 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @photos = @user.photos
-  #   render json: @photos
-  # end
+  def index
+    @user = User.find(params[:user_id])
+    @photos = @user.photos
+    render partial: "api/photos/photos", locals: { photos: @photos }
+  end
 
   def show
     @photo = Photo.find(params[:id])

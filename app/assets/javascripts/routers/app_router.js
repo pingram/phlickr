@@ -44,9 +44,10 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     // TODO: change this to a class method 2
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
       console.log('route to user profile');
-      // var photos = new Phlickr.Collections.PhotostreamPhotos(userModel.id);
-      // debugger
-      // photos.fetch();
+      var photos = new Phlickr.Collections.PhotostreamPhotos([], {
+        userId: userModel.id
+      });
+      photos.fetch();
       var view = new Phlickr.Views.Photostream({
         user: userModel
       });

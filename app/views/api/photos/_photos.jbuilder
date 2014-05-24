@@ -1,0 +1,1 @@
+json.array! photos.order(:id), partial: 'api/photos/photo', as: :photo
