@@ -57,6 +57,15 @@ img[data-photo-id]:not(#profile-pic) {
 
 
 
+/* AUTH PAGES */
+
+.auth-row {
+  position: relative;
+  top: 170px;
+}
+
+
+
 /* AUTH BACKGROUND IMAGE */
 
 .auth-page {
@@ -78,11 +87,6 @@ img[data-photo-id]:not(#profile-pic) {
 
 
 /* NAVBAR */
-
-.auth-row {
-  position: relative;
-  top: 100px;
-}
 
 a.link-other-login {
   color: #282828; // dark gray

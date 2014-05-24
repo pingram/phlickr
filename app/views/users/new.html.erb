@@ -1,11 +1,9 @@
 <div class="container auth-page">
   <div class="row auth-row">
-    <div class='col-md-offset-5'>
-
-      <h1>Sign Up</h1>
+    <div class='col-xs-offset-5'>
 
       <div class="row">
-        <form role="form" class="col-md-3"
+        <form role="form" class="col-xs-3"
           action="<%= users_url %>" method="POST">
           <%= auth_token_input %>
           <div class="form-group">
@@ -22,14 +20,14 @@
           </div>
           <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Sign Up">
+            <a class="link-other-login" href="<%= new_session_url %>">Back to Login</a>
           </div>
-          <a class="link-other-login" href="<%= new_session_url %>">Back to Login</a>
         </form>
       </div>
 
       <div class="row">
         <form role="form"
-          class="col-md-3"
+          class="col-xs-3"
           action="<%= session_url %>"
           method="post">
           <%= auth_token_input %>
