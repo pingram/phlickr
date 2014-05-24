@@ -1,3 +1,37 @@
 // Place all the styles related to the api/albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// TODO: update this so that it crops non-square pics
+
+/* ALBUM INDEX PAGE */
+
+img.album-cover-photo {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+div.album-container {
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+.album-name {
+  color: white;
+  position: relative;
+  top: -45px;
+  left: 10px;
+  font-size: 16px;
+}
+
+.album-photo-count {
+  color: white;
+  position: relative;
+  top: -55px;
+  left: 10px;
+  font-size: 12px;
+}

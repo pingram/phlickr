@@ -1,6 +1,8 @@
-<button type="button" class="btn btn-primary">Album Index View</button>
-
 <% albums.each(function(album) { %>
-  <img src="<%= album.get('cover_photo').url %>">
-  <%= album.get('name') %>
+  <div class="album-container">
+    <img src="<%= album.get('cover_photo').url %>"
+      class="album-cover-photo">
+    <p class="album-name"><%= album.get('name') %></p>
+    <p class="album-photo-count"># photos</p>
+  </div>
 <% }) %>
