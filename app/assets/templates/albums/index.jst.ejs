@@ -1,5 +1,5 @@
 <% albums.each(function(album) { %>
-  <div class="album-container">
+  <a href="#albums/<%= album.id %>" class="album-container">
     <img src="<%= album.get('cover_photo').url %>"
       class="album-cover-photo">
     <p class="album-name"><%= album.get('name') %></p>

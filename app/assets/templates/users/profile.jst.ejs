@@ -11,6 +11,29 @@
 </div>
 
 
+
+<nav class="navbar navbar-default" id="profile-navbar">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      
+      <li class="profile-nav-left">
+        <a href="#profile">Photostream</a>
+      </li>
+
+      <li class="profile-nav-left">
+        <a href="#albums">Albums</a>
+      </li>
+
+    </ul>
+
+    <div class="navbar-form navbar-right">
+    </div>
+
+  </div>
+</nav>
+
+
 <div id="profile-photostream">
   <% _(photos).each(function (photo) { %>
     <img src="<%= photo.url %>" data-photo-id="<%= photo.id %>">

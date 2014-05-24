@@ -8,6 +8,10 @@ img#profile-pic {
   position: relative;
   top: 85px;
   left: 10px;
+  z-index: 3;
+  border: 1px solid #7E6D5A;
+  border: 1px solid hsla(32, 17%, 42%, 0.35);
+  border: 1px solid hsla(360, 100%, 100%, 0.4);
 }
 
 div#cover-photo {
@@ -49,4 +53,22 @@ h4#profile-username {
   min-height: 100%;
   width: 100%;
   overflow: hidden;
+}
+
+
+
+/* PROFILE NAVBAR */
+
+nav#profile-navbar {
+  top: -62px;
+}
+
+li.profile-nav-left {
+  left: 120px;
+}
+
+#profile-navbar {
+  background: #000;  /* fallback for older browsers */
+  background:rgba(0,0,0,0.5);   /* for latest browsers */
+  z-index: 2;
 }
