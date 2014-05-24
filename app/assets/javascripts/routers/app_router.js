@@ -16,9 +16,20 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   albumNew: function () {
-    console.log('route to album new');
-    var view = new Phlickr.Views.AlbumNew();
-    this._swapView(view);
+    console.log('route to albumNew');
+    var router = this;
+
+    Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
+      var userPhotos = new Phlickr.Collections.UserPhotos([], {
+        user_id: userModel.id
+      });
+      userPhotos.fetch();
+
+      var view = new Phlickr.Views.AlbumNew({
+        collection: userPhotos
+      });
+      router._swapView(view);
+    });
   },
 
   albumIndex: function () {
