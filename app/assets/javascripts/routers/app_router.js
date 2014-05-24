@@ -9,7 +9,17 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     'profile': 'userProfile',
     'photos/:id': 'photoShow',
     'upload': 'photoUpload',
+    'albums': 'albumIndex',
     'albums/:id': 'albumShow'
+  },
+
+  albumIndex: function () {
+    var albums = new Phlickr.Collections.Albums();
+    albums.fetch();
+    var view = new Phlickr.Views.AlbumIndex({
+      collection: albums
+    })
+    this._swapView(view);
   },
 
   albumShow: function (id) {

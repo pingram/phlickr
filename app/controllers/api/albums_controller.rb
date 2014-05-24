@@ -3,11 +3,10 @@ class Api::AlbumsController < ApplicationController
     render :new
   end
 
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @albums = @user.albums
-  #   render json: @albums
-  # end
+  def index
+    @albums = current_user.albums
+    render partial: "api/albums/albums", locals: { albums: @albums }
+  end
 
   def show
     @album = Album.find(params[:id])

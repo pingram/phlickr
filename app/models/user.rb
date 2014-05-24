@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
 
   has_many :photos
+  has_many :albums
   belongs_to :profile_photo,
     class_name: "Photo",
     foreign_key: :profile_photo_id,
