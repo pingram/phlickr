@@ -12,6 +12,10 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
     this.addSubview('.user-profile', userProfileView);
   },
 
+  events: {
+    'click .albums-new-album': 'newAlbum'
+  },
+
   render: function () {
     // TODO: break out cover_photo url from album to avoid security risk
     var renderedContent = this.template({
@@ -20,5 +24,9 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.renderSubviews();
     return this;
+  },
+
+  newAlbum: function () {
+    Backbone.history.navigate('albums/new', { trigger: true });
   }
 })

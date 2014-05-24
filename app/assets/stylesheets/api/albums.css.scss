@@ -13,7 +13,7 @@ img.album-cover-photo {
   position: relative;
 }
 
-a.album-container {
+.album-container {
   float: left;
   width: 200px;
   height: 200px;
@@ -34,4 +34,26 @@ a.album-container {
   top: -55px;
   left: 10px;
   font-size: 12px;
+}
+
+
+
+/* NEW ALBUM STYLING */
+
+.albums-new-album {
+  background-color: #31221B;
+  float: left;
+}
+
+#new-album-plus {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  font-size: 86px;
+  font-weight: 700;
+}
+
+#new-album-description {
+  font-size: 16px;
+  text-align: center;
 }

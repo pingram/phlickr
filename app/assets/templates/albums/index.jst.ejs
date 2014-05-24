@@ -1,10 +1,16 @@
 <div class="user-profile"></div>
 
+<!-- <div class="row"> -->
 <% albums.each(function(album) { %>
   <a href="#albums/<%= album.id %>" class="album-container">
     <img src="<%= album.get('cover_photo').url %>"
       class="album-cover-photo">
     <p class="album-name"><%= album.get('name') %></p>
     <p class="album-photo-count"># photos</p>
-  </div>
+  </a>
 <% }) %>
+
+<div class="album-container albums-new-album">
+  <p id="new-album-plus">+</p>
+  <p id="new-album-description">Add New Album</p>
+</div>
