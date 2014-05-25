@@ -1,1 +1,5 @@
-<br><br><br><button type="button">hola</button>
+<div id="profile-photostream">
+  <% photos.each(function (photo) { %>
+    <img src="<%= photo.escape('url') %>" data-photo-id="<%= photo.id %>">
+  <% }) %>
+</div>

@@ -42,7 +42,7 @@ prof_pic1 = Photo.create!(
 guest.profile_photo_id = prof_pic1.id
 guest.save!
 
-Photo.create!(
-    user_id: 2,
-    description: "stock photo for user 2",
-    url: photo_urls[0])
+# Photo.create!(
+#     user_id: 2,
+#     description: "stock photo for user 2",
+#     url: photo_urls[0])
