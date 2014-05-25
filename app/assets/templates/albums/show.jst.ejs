@@ -1,3 +1,7 @@
-<% _(photos).each(function(photo) { %>
-  <img src="<%= photo.url %>">
-<% }) %>
+<div class="user-profile"></div>
+
+<div id="profile-photostream">
+  <% _(photos).each(function (photo) { %>
+    <img src="<%= photo.url %>" data-photo-id="<%= photo.id %>">
+  <% }) %>
+</div>

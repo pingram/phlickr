@@ -48,13 +48,28 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
-    var album = new Phlickr.Models.Album({id: id});
-    album.fetch();
-    console.log('route to album show');
-    var view = new Phlickr.Views.AlbumShow({
-      model: album
+    var router = this;
+    // TODO: change this to a class method 2
+    Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
+      console.log('route to album show');
+      var album = new Phlickr.Models.Album({id: id});
+      album.fetch();
+      var view = new Phlickr.Views.AlbumShow({
+        user: userModel,
+        model: album
+      });
+      router._swapView(view);
     });
-    this._swapView(view);
+
+
+
+    // var album = new Phlickr.Models.Album({id: id});
+    // album.fetch();
+    // console.log('route to album show');
+    // var view = new Phlickr.Views.AlbumShow({
+    //   model: album
+    // });
+    // this._swapView(view);
   },
 
   photostream: function () {
