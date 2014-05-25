@@ -15,9 +15,14 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
+  def explore
+    @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
+    render partial: "api/photos/photos", locals: { photos: @photos }
+  end
+
   def index
     @user = User.find(params[:user_id])
-    @photos = @user.photos
+    @photos = @user.photos.order(:id)
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
 

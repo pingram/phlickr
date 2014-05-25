@@ -8,11 +8,26 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     '': 'photostream', // for some reason this wasn't working with back requests
     'profile': 'photostream',
     'photostream': 'photostream',
+    'photos/explore': 'photoExplore',
     'photos/:id': 'photoShow',
     'upload': 'photoUpload',
     'albums': 'albumIndex',
     'albums/new': 'albumNew',
     'albums/:id': 'albumShow',
+  },
+
+  photoExplore: function () {
+    console.log("route to photo explore");
+    var router = this;
+    var photos = new Phlickr.Collections.ExplorePhotos();
+    photos.fetch({
+      success: function (photos) {
+        var view = new Phlickr.Views.PhotoExplore({
+          collection: photos
+        })
+        router._swapView(view);
+      }
+    })
   },
 
   albumNew: function () {

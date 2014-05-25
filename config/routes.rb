@@ -10,6 +10,7 @@ Phlickr::Application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get "users/profile", to: "users#profile"
+    get "photos/explore", to: "photos#explore"
     resources :users, only: [:show]
     resources :users, only: [] do
       resources :photos, only: [:index]

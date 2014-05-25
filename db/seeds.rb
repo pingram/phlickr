@@ -33,12 +33,6 @@ photo_urls.each_with_index do |photo_url, i|
   new_photo.save!
 end
 
-new_photo = album2.photos.build(
-  user_id: 1,
-  description: "stock photo number #???",
-  url: "http://been-seen.com/wp-content/uploads/Cool-Tent-Designs-We-Love-Main.jpg")
-new_photo.save!
-
 # profile pic
 prof_pic1 = Photo.create!(
   user_id: 1,
