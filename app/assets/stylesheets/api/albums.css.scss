@@ -70,18 +70,20 @@ img.album-cover-photo {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  border: 3px solid red;
+  // border: 3px solid red;
   padding: 0px;
 }
 
 .new-album-upper-pane {
   position: relative;
   width: 100%;
-  border: 3px solid green;
+  // border: 3px solid green;
   height: -webkit-calc(100% - 150px);
   height: -moz-calc(100% - 150px);
   height: calc(100% - 150px);
   margin: 0px;
+  padding-top: 25px;
+  padding-bottom: 5px;
 }
 
 .new-album-lower-pane {
@@ -89,5 +91,44 @@ img.album-cover-photo {
   position: relative;
   width: 100%;
   height: 150px;
-  border: 3px solid blue;
+  // border: 3px solid blue;
+}
+
+.new-album-sidebar {
+  height: 100%;
+}
+
+.new-album-drag-section {
+  background-color: #F0F0F0;
+  // border: 3px solid orange;
+  height: 100%;
+}
+
+.drag-section-instructions {
+  position: relative;
+  top: 30%;
+}
+
+#instruction-text-1 {
+  color: #9C9C9C;
+  font-size: 33px;
+  text-align: center;
+}
+
+#instruction-text-2 {
+  position: relative;
+  color: #9C9C9C;
+  font-size: 25px;
+  text-align: center;
+}
+
+.new-album-lower-pane {
+  background-color: #F0F0F0;
+}
+
+.user-picture-container {
+  background-color: #D4D4D4;
+  position: relative;
+  height: 85px;
+  top: 30px;
 }
