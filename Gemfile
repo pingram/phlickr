@@ -17,6 +17,7 @@ gem 'rake'
 gem 'bcrypt'
 gem 'serialize_json-rails'
 gem 'addressable'
+gem 'rest-client'
 
 gem 'figaro'
 gem 'paperclip'

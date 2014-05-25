@@ -21,7 +21,7 @@ class Api::PhotosController < ApplicationController
   def explore
 
     # getExploreUrls
-    url = Addressable::URI.new(
+    photoExploreUrl = Addressable::URI.new(
       :scheme => "https",
       :host => "api.flickr.com",
       :path => "services/rest/",
@@ -32,6 +32,27 @@ class Api::PhotosController < ApplicationController
       }
     ).to_s
 
+    FlickRaw.api_key = ENV["FLICKR_API_KEY"]
+    FlickRaw.shared_secret=ENV["FLICKR_SECRET"]
+
+    json_photos = RestClient.get(photoExploreUrl)
+    photos = JSON.parse(json_photos)["photos"]["photo"]
+    small_list = photos[0..4]
+    photo_m_urls = []
+    small_list.each do |photo_hash|
+      id = photo_hash['id']
+      secret = photo_hash['secret']
+      server_id = photo_hash['server']
+      size = 'm'
+
+      newPhotoUrl = Addressable::URI.new(
+        :scheme => "http",
+        :host => "farm#{photo_hash['farm']}.staticflickr.com",
+        :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
+      ).to_s
+
+      photo_m_urls << newPhotoUrl
+    end
 
     fail
 
