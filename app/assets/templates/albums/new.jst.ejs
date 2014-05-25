@@ -27,5 +27,8 @@
 
 <div class="row new-album-lower-pane">
   <div class="user-picture-container">
+    <% userPhotos.each(function (photo) { %>
+      <img src="<%= photo.escape('url') %>">
+    <% }) %>
   </div>
 </div>
