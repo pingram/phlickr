@@ -11,24 +11,28 @@
       </div>
       
       <div class="form-group">
-        <input type="submit" value="SAVE" class="btn btn-default">
-        <button type="button" class="btn btn-default">CANCEL</button>
+        <input type="submit" value="SAVE" class="btn btn-default save">
+        <button type="button" class="btn btn-default cancel">CANCEL</button>
       </div>
     </form>
   </div>
 
-  <div class="col-xs-9 new-album-drag-section">
-    <div class="drag-section-instructions">
-      <p id="instruction-text-1">Drag stuff here to add it to the album</p>
-      <p id="instruction-text-2">You can drag them around to re-order them.</p>
+  <ul class="col-xs-9 new-album-drag-section connected-sortable" id="sortable2">
+    <div class="drag-section-instructions ui-state-disabled">
+      <div id="inner-drag-section-instructions">
+        <p id="instruction-text-1">Drag stuff here to add it to the album</p>
+        <p id="instruction-text-2">You can drag them around to re-order them.</p>
+      </div>
     </div>
-  </div>
+  </ul>
 </div>
 
 <div class="row new-album-lower-pane">
-  <div class="user-picture-container">
+  <ul class="user-picture-container connected-sortable" id="sortable1">
     <% userPhotos.each(function (photo) { %>
-      <img src="<%= photo.escape('url') %>">
+      <li class="ui-state-default">
+        <img src="<%= photo.escape('url') %>" data-id="<%= photo.id %>">
+      </li>
     <% }) %>
-  </div>
+  </ul>
 </div>
