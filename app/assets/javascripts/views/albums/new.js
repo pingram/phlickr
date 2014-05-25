@@ -35,7 +35,26 @@ Phlickr.Views.AlbumNew = Backbone.View.extend({
   },
 
   save: function (event) {
+    var imageArray = [];
     event.preventDefault();
-    debugger
+    $imgs = this.$el.find('#sortable2 img')
+    _($imgs).each(function (image) {
+      var $image = $(image);
+      imageArray.push($image.data('id'));
+    });
+
+    var params = this.$el.find('form').serializeJSON()["album"];
+    params['photo_ids'] = imageArray
+    var newAlbum = new Phlickr.Models.Album(params);
+
+    newAlbum.save([], {
+      success: function() {
+        Backbone.history.navigate('albums', { trigger: true });
+      },
+      error: function() {
+        // TODO: add validation errors
+        Backbone.history.navigate('albums/new', { trigger: true });
+      }
+    });
   }
 })

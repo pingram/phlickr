@@ -13,15 +13,17 @@ class Api::AlbumsController < ApplicationController
     render partial: "api/albums/album", locals: { album: @album }
   end
 
-  # def create
-  #   @album = current_user.albums.build(:file => params[:album])
+  def create
+    photo_ids = params[:photo_ids]
+    @album = current_user.albums.build(album_params)
+    @album.photos = Photo.where(id: photo_ids)
 
-  #   if @album.save
-  #     render partial: "api/albums/album", locals: { album: @album }
-  #   else
-  #     render json: { errors: @album.errors.full_messages }, status: 422
-  #   end
-  # end
+    if @album.save
+      render partial: "api/albums/album", locals: { album: @album }
+    else
+      render json: { errors: @album.errors.full_messages }, status: 422
+    end
+  end
 
   # def update
   #   @album = Album.find(params[:id])
