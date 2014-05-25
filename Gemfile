@@ -16,10 +16,12 @@ gem 'backbone-on-rails'
 gem 'rake'
 gem 'bcrypt'
 gem 'serialize_json-rails'
+gem 'addressable'
 
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'flickraw'
 
 group :doc do
   gem 'sdoc', require: false

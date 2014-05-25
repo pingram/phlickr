@@ -1,4 +1,7 @@
+require 'addressable/uri'
+
 class Api::PhotosController < ApplicationController
+
   def new
     render :new
   end
@@ -16,6 +19,22 @@ class Api::PhotosController < ApplicationController
   # end
 
   def explore
+
+    # getExploreUrls
+    url = Addressable::URI.new(
+      :scheme => "https",
+      :host => "api.flickr.com",
+      :path => "services/rest/",
+      :query_values => {:method => "flickr.interestingness.getList",
+        :api_key => ENV["FLICKR_API_KEY"],
+        :format => "json",
+        :nojsoncallback => "1",
+      }
+    ).to_s
+
+
+    fail
+
     @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
@@ -60,4 +79,8 @@ class Api::PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:user_id, :description, :url, :file)
   end
+
+  # def getExploreUrls
+  #   debugger
+  # end
 end
