@@ -29,6 +29,8 @@ class Api::PhotosController < ApplicationController
         :api_key => ENV["FLICKR_API_KEY"],
         :format => "json",
         :nojsoncallback => "1",
+        :per_page => "30",
+        :page => "1"
       }
     ).to_s
 
@@ -38,8 +40,11 @@ class Api::PhotosController < ApplicationController
     json_photos = RestClient.get(photoExploreUrl)
     photos = JSON.parse(json_photos)["photos"]["photo"]
     small_list = photos[0..4]
-    photo_m_urls = []
-    small_list.each do |photo_hash|
+    photo_urls = []
+
+    @photos = []
+
+    photos.each do |photo_hash|
       id = photo_hash['id']
       secret = photo_hash['secret']
       server_id = photo_hash['server']
@@ -51,12 +56,13 @@ class Api::PhotosController < ApplicationController
         :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
       ).to_s
 
-      photo_m_urls << newPhotoUrl
+      photo_urls << newPhotoUrl
+      @photos << Photo.new(url: newPhotoUrl)
     end
 
-    fail
+    # fail
 
-    @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
+    # @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
 
