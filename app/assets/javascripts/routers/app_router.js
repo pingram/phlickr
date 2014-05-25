@@ -48,18 +48,31 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
+    console.log('route to album show');
     var router = this;
-    // TODO: change this to a class method 2
-    Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
-      console.log('route to album show');
-      var album = new Phlickr.Models.Album({id: id});
-      album.fetch();
-      var view = new Phlickr.Views.AlbumShow({
-        user: userModel,
-        model: album
-      });
-      router._swapView(view);
-    });
+    var album = new Phlickr.Models.Album({ id: id });
+    album.fetch({
+      success: function (album) {
+        var view = new Phlickr.Views.AlbumShow({
+          model: album
+        });
+        router._swapView(view);
+      }
+    })
+
+
+    // var router = this;
+    // // TODO: change this to a class method 2
+    // Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
+    //   console.log('route to album show');
+    //   var album = new Phlickr.Models.Album({id: id});
+    //   album.fetch();
+    //   var view = new Phlickr.Views.AlbumShow({
+    //     user: userModel,
+    //     model: album
+    //   });
+    //   router._swapView(view);
+    // });
 
 
 

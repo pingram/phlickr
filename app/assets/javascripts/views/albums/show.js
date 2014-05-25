@@ -3,10 +3,11 @@ Phlickr.Views.AlbumShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.model = options.model;
-    this.user = options.user;
-
-    this.listenTo(this.model, 'sync', this.render);
-
+    this.user = new Phlickr.Models.User({
+      fname: this.model.get('name'),
+      profile_photo: this.model.get('photos')[0]
+    })
+    
     var userProfileView = new Phlickr.Views.UserProfile({
       model: this.user
     })
