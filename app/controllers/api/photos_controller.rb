@@ -1,6 +1,7 @@
 require 'addressable/uri'
 
 class Api::PhotosController < ApplicationController
+  include Api::PhotosHelper
 
   def new
     render :new
@@ -19,52 +20,14 @@ class Api::PhotosController < ApplicationController
   # end
 
   def explore
-
-    # getExploreUrls
-    photoExploreUrl = Addressable::URI.new(
-      :scheme => "https",
-      :host => "api.flickr.com",
-      :path => "services/rest/",
-      :query_values => {:method => "flickr.interestingness.getList",
-        :api_key => ENV["FLICKR_API_KEY"],
-        :format => "json",
-        :nojsoncallback => "1",
-        :per_page => "30",
-        :page => "1"
-      }
-    ).to_s
-
-    FlickRaw.api_key = ENV["FLICKR_API_KEY"]
-    FlickRaw.shared_secret=ENV["FLICKR_SECRET"]
-
-    json_photos = RestClient.get(photoExploreUrl)
-    photos = JSON.parse(json_photos)["photos"]["photo"]
-    small_list = photos[0..4]
-    photo_urls = []
-
-    @photos = []
-
-    photos.each do |photo_hash|
-      id = photo_hash['id']
-      secret = photo_hash['secret']
-      server_id = photo_hash['server']
-      size = 'm'
-
-      newPhotoUrl = Addressable::URI.new(
-        :scheme => "http",
-        :host => "farm#{photo_hash['farm']}.staticflickr.com",
-        :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
-      ).to_s
-
-      photo_urls << newPhotoUrl
-      @photos << Photo.new(url: newPhotoUrl)
-    end
-
-    # fail
+    @photos = get_explore_photos
 
     # @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
+
+
+
 
   def index
     @user = User.find(params[:user_id])
@@ -106,8 +69,4 @@ class Api::PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:user_id, :description, :url, :file)
   end
-
-  # def getExploreUrls
-  #   debugger
-  # end
 end
