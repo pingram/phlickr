@@ -23,14 +23,16 @@ class Photo < ActiveRecord::Base
   has_many :albums, through: :album_photos, source: :album, inverse_of: :photos
 
   # This method associates the attribute ":_photo" with a file attachment
-  has_attached_file :file,
+  has_attached_file :file, {
     styles: {
       original: '2400x1800>',
       large: '1024x768>',
       medium: '500x375>',
       large_square: '150x150!'
     },
-    whiny: false
+    s3_headers: { "Cache-Control" => "max-age=315576000", "Expires" => 10.years.from_now.httpdate }
+  }
+
 
   # Validate the attached image is image/jpg, image/png, etc
   # TODO: come back

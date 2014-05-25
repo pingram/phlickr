@@ -23,7 +23,7 @@ class Api::PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
-    render partial: "api/photos/photo", locals: { photo: @photo }
+    render partial: "api/photos/photo_original", locals: { photo: @photo }
   end
 
   def create
