@@ -12,6 +12,8 @@
 #  file_content_type :string(255)
 #  file_file_size    :integer
 #  file_updated_at   :datetime
+#  width             :integer
+#  height            :integer
 #
 
 require 'spec_helper'

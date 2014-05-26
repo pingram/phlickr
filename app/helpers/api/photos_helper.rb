@@ -17,6 +17,8 @@ module Api::PhotosHelper
       photos << get_photo_to_add(photo_hash)
     end
 
+    fail
+
     sized_photos = size_photos_for_rows(photos)
 
     sized_photos
@@ -24,29 +26,40 @@ module Api::PhotosHelper
 
   def size_photos_for_rows(photos)
     photos_to_resize = photos
+    resized_photos = []
 
-    # until photos_to_resize.empty?
-    #   working_set ||= []
-    #   working_set << photos_to_resize.pop
-    #   fail
-    # end
-    # resized_photos = working_set
-    # resized_photos
+    until photos_to_resize.empty?
+      i = 0
+      loop do
+        working_set ||= []
+        working_set << photos_to_resize.pop
+
+        fail
+        break
+        i += 1
+      end
+      resized_photos << working_set
+    end
+    resized_photos
   end
 
   def get_photo_to_add(photo_hash)
     id = photo_hash['id']
-    secret = photo_hash['secret']
-    server_id = photo_hash['server']
-    size = 'm'
+    url = photo_hash['url_m']
+    width = photo_hash['width_m']
+    height = photo_hash['height_m']
+    
+    # secret = photo_hash['secret']
+    # server_id = photo_hash['server']
+    # size = 'm'
 
-    newPhotoUrl = Addressable::URI.new(
-      :scheme => "http",
-      :host => "farm#{photo_hash['farm']}.staticflickr.com",
-      :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
-    ).to_s
+    # newPhotoUrl = Addressable::URI.new(
+    #   :scheme => "http",
+    #   :host => "farm#{photo_hash['farm']}.staticflickr.com",
+    #   :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
+    # ).to_s
 
-    Photo.new(url: newPhotoUrl)
+    Photo.new(id: id, url: url, width: width, height: height)
   end
 
   def get_json_photos(page_num, page_size)
@@ -59,7 +72,8 @@ module Api::PhotosHelper
         :format => "json",
         :nojsoncallback => "1",
         :per_page => "#{page_size}",
-        :page => "#{page_num}"
+        :page => "#{page_num}",
+        :extras => "url_m"
       }
     ).to_s
 
