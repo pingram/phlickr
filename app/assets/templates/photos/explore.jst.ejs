@@ -1,10 +1,12 @@
 <div id="explore-photos">
   <% photo_rows.each(function(photo_row) { %>
-    <div class="row">
+    <div class="row explore-rows">
       <% _(photo_row.attributes).each(function(photo) { %>
-        <img src="<%= photo.url %>" 
-          width="<%= photo.width %>" height="<%= photo.height %>"
-          class="explore-photo">
+        <div class="explore-photo-wrapper">
+          <img src="<%= photo.url %>" 
+            width="<%= photo.width %>" height="<%= photo.height %>"
+            class="explore-photo">
+        </div>
       <% }) %>
     </div>
   <% }) %>

@@ -78,15 +78,16 @@ form.photo-upload-form {
 
 
 /* EXPLORE PHOTOS */
-div#explore-photos img.explore-photo {
-  // margin-bottom: 5px;
+
+div.explore-photo-wrapper {
+  margin-bottom: 10px;
   padding: 0px;
   float: left;
+  padding-right: 10px;
   // margin-right: 10px;
 }
 
-// div#explore-photos div.row {
-//   margin-left: 0px;
-//   margin-right: 0px;
-//   padding: 5px;
-// }
+
+div#explore-photos {
+  margin-left: 25px;
+}

@@ -1,14 +1,14 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
-    page_width = Integer(page_width)
+    page_width = Integer(page_width) - 40
     # page_width = 1350         #TODO: return and update this XXX
 
     page_num = Integer(page_num)
     if page_num == 1
-      page_size = 10      #originally 50
+      page_size = 20      #originally 50
     else
       page_size = 10
-      # page_num += 4       #originally 4
+      page_num += 1       #originally 4
     end
 
     json_photos = get_json_photos(page_num, page_size, page_width)
