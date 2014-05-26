@@ -2,7 +2,7 @@ module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
     page_num = Integer(page_num)
     if page_num == 1
-      page_size = 50
+      page_size = 10      # CHANGE THIS BACK TO 50 LATER!!!! XXX
     else
       page_size = 10
       page_num += 4
@@ -23,6 +23,7 @@ module Api::PhotosHelper
   end
 
   def size_photos_for_rows(photos, page_width)
+    page_width = Integer(page_width)
     photos_to_resize = photos
     resized_photos = []
 
@@ -30,7 +31,9 @@ module Api::PhotosHelper
       i = 0
       working_set = []
       max_r_height = 400
+      total_width = 0
       loop do
+        break if photos_to_resize.empty?
         working_set << photos_to_resize.pop
 
         # if !working_set.empty?
@@ -55,17 +58,23 @@ module Api::PhotosHelper
         i += 1
       end
 
-      row_photos = resize_row_photos(working_set)
+      resized_row_photos = resize_row_photos(working_set, total_width, page_width)
 
-
-
-      resized_photos << working_set
+      resized_photos += resized_row_photos
     end
+
     resized_photos
   end
 
-  def resize_row_photos(working_set, page_width)
-
+  def resize_row_photos(working_set, total_width, page_width)
+    if total_width > page_width   # check to make sure it's not last row
+      scaler = total_width / page_width.to_f
+      working_set.each do |photo|
+        photo.display_height = photo.display_height / scaler
+        photo.display_width = photo.display_width / scaler
+      end
+    end
+    working_set
   end
 
   def resize_photos(working_set, new_height)
