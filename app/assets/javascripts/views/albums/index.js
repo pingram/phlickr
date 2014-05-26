@@ -15,7 +15,7 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   events: {
     'click .albums-new-album': 'newAlbum',
     'click .album-delete-icon': 'deleteAlbum',
-    'click .delete-album-confirm': 'deleteAlbumConfirm'
+    'click button.delete-album-confirm': 'deleteAlbumConfirm'
   },
 
   render: function () {
@@ -25,6 +25,14 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.renderSubviews();
+
+    // add album id to modal delete button
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+      alert('hi');
+      var albumId = $(e.relatedTarget).attr('data-album-id');
+      $(this).find('.delete-album').attr('data-album-id', albumId);
+    });
+
     return this;
   },
 
@@ -37,6 +45,7 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   },
 
   deleteAlbumConfirm: function (event) {
+    // debugger
     event.preventDefault();
     // var album = this.model;
     

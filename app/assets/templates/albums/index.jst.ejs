@@ -2,7 +2,8 @@
 
 <!-- <div class="row"> -->
 <% albums.each(function(album) { %>
-  <a href="#albums/<%= album.id %>" class="album-container">
+  <a href="#albums/<%= album.id %>" class="album-container"
+    data-album-id="<%= album.id %>">
     <img src="<%= album.get('cover_photo').url %>"
       class="album-cover-photo">
     <p class="album-name"><%= album.escape('name') %></p>
@@ -33,7 +34,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="delete-album btn btn-danger">Delete</button>
+        <button type="button" class="delete-album-confirm btn btn-danger">Delete</button>
       </div>
     </div>
   </div>
