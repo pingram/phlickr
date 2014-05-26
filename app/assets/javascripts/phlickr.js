@@ -5,7 +5,7 @@ window.Phlickr = {
   Routers: {},
   initialize: function() {
     // alert('Hello from Backbone!');
-    new Phlickr.Routers.AppRouter({
+    Phlickr.Routers.app_router = new Phlickr.Routers.AppRouter({
       $rootEl: $('#content')
     });
     Backbone.history.start({ })//pushState: true });

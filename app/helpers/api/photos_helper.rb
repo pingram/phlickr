@@ -35,7 +35,7 @@ module Api::PhotosHelper
         :api_key => ENV["FLICKR_API_KEY"],
         :format => "json",
         :nojsoncallback => "1",
-        :per_page => "30",
+        :per_page => "10",
         :page => "1"
       }
     ).to_s
