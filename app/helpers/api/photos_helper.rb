@@ -1,6 +1,14 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num)
-    json_photos = get_json_photos(page_num)
+    page_num = Integer(page_num)
+    if page_num == 1
+      page_size = 50
+    else
+      page_size = 10
+      page_num += 4
+    end
+
+    json_photos = get_json_photos(page_num, page_size)
 
     hashed_photos = JSON.parse(json_photos)["photos"]["photo"]
     photos = []
@@ -26,7 +34,7 @@ module Api::PhotosHelper
     Photo.new(url: newPhotoUrl)
   end
 
-  def get_json_photos(page_num)
+  def get_json_photos(page_num, page_size)
     photoExploreUrl = Addressable::URI.new(
       :scheme => "https",
       :host => "api.flickr.com",
@@ -35,7 +43,7 @@ module Api::PhotosHelper
         :api_key => ENV["FLICKR_API_KEY"],
         :format => "json",
         :nojsoncallback => "1",
-        :per_page => "30",
+        :per_page => "#{page_size}",
         :page => "#{page_num}"
       }
     ).to_s

@@ -55,6 +55,9 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.1.4)
+    byebug (3.0.0)
+      columnize (~> 0.3)
+      debugger-linecache (~> 1.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -67,7 +70,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.8.9)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     eco (1.0.0)
       coffee-script
@@ -192,6 +197,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  byebug
   coffee-rails (~> 4.0.0)
   figaro
   flickraw

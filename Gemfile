@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'byebug'
 
 gem 'annotate'
 gem 'backbone-on-rails'
