@@ -21,10 +21,6 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     'click #photo-show-holder': 'closeForm'
   },
 
-  centerImage: function () {
-    alert('hi');
-  },
-
   render: function() {
     console.log('render photos/show')
 

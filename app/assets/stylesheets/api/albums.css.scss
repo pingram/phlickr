@@ -161,3 +161,41 @@ img.album-cover-photo {
   width: 75px;
   height: 75px;
 }
+
+
+
+/* DELETE ALBUM BUTTON */
+.album-delete-icon {
+  position: relative;
+  top: -255px;
+  left: 160px;
+  font-size: 24px;
+  color: white;
+  // border: 1px solid red;
+  padding: 5px;
+  visibility: hidden;
+}
+
+.album-container:hover .album-delete-icon {
+  visibility: visible;
+} 
+
+
+
+
+/* from: http://www.cvwdesign.com/txp/article/395/css3-box-shadow-and-image-hover-effects */
+img.album-cover-photo:hover, div.albums-new-album:hover {
+  border: solid 1px #CCC;
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+}
+
+img.album-cover-photo, div.albums-new-album{
+  cursor: pointer;
+  cursor: hand; /* needed for cross-browser support */
+}
+
+img.album-cover-photo, div.albums-new-album {
+  padding: 5px; border: solid 1px #EFEFEF;
+}

@@ -13,7 +13,9 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    'click .albums-new-album': 'newAlbum'
+    'click .albums-new-album': 'newAlbum',
+    'click .album-delete-icon': 'deleteAlbum',
+    'click .delete-album-confirm': 'deleteAlbumConfirm'
   },
 
   render: function () {
@@ -28,5 +30,28 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
 
   newAlbum: function () {
     Backbone.history.navigate('albums/new', { trigger: true });
+  },
+
+  deleteAlbum: function (event) {
+    event.preventDefault();
+  },
+
+  deleteAlbumConfirm: function (event) {
+    event.preventDefault();
+    // var album = this.model;
+    
+    // needed to force modal removal from backboneXXX
+    $('#confirm-delete').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+
+    // photo.destroy({
+    //   success: function () {
+    //     console.log("photo " + photo.id + " deleted");
+    //   }
+    // });
+    // Backbone.history.history.back({
+    //   trigger: true
+    // })
   }
 })
