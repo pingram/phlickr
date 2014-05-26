@@ -17,7 +17,7 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
   render: function () {
     console.log('render photo explore');
     var renderedContent = this.template({
-      photos: this.collection
+      photo_rows: this.collection
     });
 
     this.$el.html(renderedContent); 

@@ -1,6 +1,6 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
-    page_width = Integer(page_width) - 20
+    page_width = Integer(page_width) - 40
     # page_width = 1350         #TODO: return and update this XXX
 
     page_num = Integer(page_num)
@@ -32,7 +32,7 @@ module Api::PhotosHelper
     until photos_to_resize.empty?
       i = 0
       working_set = []
-      max_r_height = 400
+      max_r_height = page_width / 3.3
       total_width = 0
       loop do
         break if photos_to_resize.empty?
@@ -55,14 +55,14 @@ module Api::PhotosHelper
           total_width += photo.display_width
         end
 
-        # fail if i > 3
-        break if total_width > page_width
+        # go to resize row if outside width and there is more than 1 photo
+        break if (total_width > page_width && i > 0)
         i += 1
       end
 
       resized_row_photos = resize_row_photos(working_set, total_width, page_width)
 
-      resized_photos += resized_row_photos
+      resized_photos << resized_row_photos
     end
 
     resized_photos
