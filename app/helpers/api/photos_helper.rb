@@ -1,6 +1,6 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
-    page_width = Integer(page_width) - 40
+    page_width = Integer(page_width)
     # page_width = 1350         #TODO: return and update this XXX
 
     page_num = Integer(page_num)
@@ -11,13 +11,13 @@ module Api::PhotosHelper
       # page_num += 4       #originally 4
     end
 
-    json_photos = get_json_photos(page_num, page_size)
+    json_photos = get_json_photos(page_num, page_size, page_width)
 
     hashed_photos = JSON.parse(json_photos)["photos"]["photo"]
     photos = []
 
     hashed_photos.reverse.each do |photo_hash|
-      photos << get_photo_to_add(photo_hash)
+      photos << get_photo_to_add(photo_hash, page_width)
     end
 
     sized_photos = size_photos_for_rows(photos, page_width)
@@ -32,7 +32,7 @@ module Api::PhotosHelper
     until photos_to_resize.empty?
       i = 0
       working_set = []
-      max_r_height = page_width / 3.3
+      max_r_height = page_width / 3.4
       total_width = 0
       loop do
         break if photos_to_resize.empty?
@@ -91,11 +91,11 @@ module Api::PhotosHelper
     # end
   end
 
-  def get_photo_to_add(photo_hash)
+  def get_photo_to_add(photo_hash, page_width)
     id = photo_hash['id']
-    url = photo_hash['url_m']
-    width = photo_hash['width_m']
-    height = photo_hash['height_m']
+    url = page_width > 1400 ? photo_hash['url_l'] : photo_hash['url_m']
+    width = page_width > 1400 ? photo_hash['width_l'] : photo_hash['width_m']
+    height = page_width > 1400 ? photo_hash['height_l'] : photo_hash['height_m']
     
     # secret = photo_hash['secret']
     # server_id = photo_hash['server']
@@ -106,12 +106,15 @@ module Api::PhotosHelper
     #   :host => "farm#{photo_hash['farm']}.staticflickr.com",
     #   :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
     # ).to_s
+    # fail
 
     Photo.new(id: id, url: url, o_width: width, o_height: height,
       display_width: width, display_height: height)
   end
 
-  def get_json_photos(page_num, page_size)
+  def get_json_photos(page_num, page_size, page_width)
+    url = page_width > 1400 ? "url_l" : "url_m"
+
     photoExploreUrl = Addressable::URI.new(
       :scheme => "https",
       :host => "api.flickr.com",
@@ -122,7 +125,7 @@ module Api::PhotosHelper
         :nojsoncallback => "1",
         :per_page => "#{page_size}",
         :page => "#{page_num}",
-        :extras => "url_m"
+        :extras => url
       }
     ).to_s
 
