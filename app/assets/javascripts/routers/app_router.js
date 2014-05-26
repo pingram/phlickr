@@ -44,7 +44,8 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
           router._swapView(Phlickr.Views.photoExplore);
         }
         else {
-          // Phlickr.Views.photoExplore.render();
+          // router.$rootEl.html(Phlickr.Views.photoExplore.render().$el);
+          // installHandlers();
         }
       },
       error: function() {
@@ -170,11 +171,20 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
+    this.cleanupExplore(view);
     if (this._currentView) {
       this._currentView.remove();
     }
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
     installHandlers();
+  },
+
+  cleanupExplore: function (view) {
+    if (Phlickr.Views.photoExplore && view !== Phlickr.Views.photoExplore) {
+      Phlickr.Views.photoExplore.remove();
+      delete Phlickr.Views['photoExplore'];
+      delete Phlickr.Collections['explorePhotos'];
+    }
   }
 });
