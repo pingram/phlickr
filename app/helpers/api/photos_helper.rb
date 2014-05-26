@@ -1,5 +1,5 @@
 module Api::PhotosHelper
-  def get_explore_photos(page_num)
+  def get_explore_photos(page_num, page_width)
     page_num = Integer(page_num)
     if page_num == 1
       page_size = 50
@@ -16,7 +16,22 @@ module Api::PhotosHelper
     hashed_photos.each do |photo_hash|
       photos << get_photo_to_add(photo_hash)
     end
-    photos
+
+    sized_photos = size_photos_for_rows(photos)
+
+    sized_photos
+  end
+
+  def size_photos_for_rows(photos)
+    photos_to_resize = photos
+
+    # until photos_to_resize.empty?
+    #   working_set ||= []
+    #   working_set << photos_to_resize.pop
+    #   fail
+    # end
+    # resized_photos = working_set
+    # resized_photos
   end
 
   def get_photo_to_add(photo_hash)
@@ -47,9 +62,6 @@ module Api::PhotosHelper
         :page => "#{page_num}"
       }
     ).to_s
-
-    FlickRaw.api_key = ENV["FLICKR_API_KEY"]
-    FlickRaw.shared_secret=ENV["FLICKR_SECRET"]
 
     json_photos = RestClient.get(photoExploreUrl)
   end

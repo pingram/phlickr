@@ -20,7 +20,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     console.log("route to photo explore");
 
     var router = this;
-    // debugger
 
     if(!Phlickr.Collections.explorePhotos){
       Phlickr.Collections.explorePhotos = new Phlickr.Collections.ExplorePhotos;
@@ -35,7 +34,12 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     Phlickr.Collections.explorePhotos.url =
       'api/photos/explore/' + Phlickr.Collections.explorePhotos.page;
 
+    Phlickr.Collections.explorePhotos.pageWidth = $(document).width();
+
     Phlickr.Collections.explorePhotos.fetch({
+      data: {
+        page_width: Phlickr.Collections.explorePhotos.pageWidth
+      },
       remove: false,
       success: function() {
         if (!Phlickr.Views.photoExplore) {
@@ -55,18 +59,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
         new Error({ message: "Error loading documents." });
       }
     });
-
-
-    // var router = this;
-    // var photos = new Phlickr.Collections.ExplorePhotos();
-    // photos.fetch({
-    //   success: function (photos) {
-    //     var view = new Phlickr.Views.PhotoExplore({
-    //       collection: photos
-    //     })
-    //     router._swapView(view);
-    //   }
-    // })
   },
 
   albumNew: function () {
