@@ -1,11 +1,14 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
+    page_width = Integer(page_width) - 20
+    # page_width = 1350         #TODO: return and update this XXX
+
     page_num = Integer(page_num)
     if page_num == 1
-      page_size = 10      # CHANGE THIS BACK TO 50 LATER!!!! XXX
+      page_size = 10      #originally 50
     else
       page_size = 10
-      page_num += 4
+      # page_num += 4       #originally 4
     end
 
     json_photos = get_json_photos(page_num, page_size)
@@ -13,7 +16,7 @@ module Api::PhotosHelper
     hashed_photos = JSON.parse(json_photos)["photos"]["photo"]
     photos = []
 
-    hashed_photos.each do |photo_hash|
+    hashed_photos.reverse.each do |photo_hash|
       photos << get_photo_to_add(photo_hash)
     end
 
@@ -23,7 +26,6 @@ module Api::PhotosHelper
   end
 
   def size_photos_for_rows(photos, page_width)
-    page_width = Integer(page_width)
     photos_to_resize = photos
     resized_photos = []
 

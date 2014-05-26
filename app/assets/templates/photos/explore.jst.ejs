@@ -1,6 +1,7 @@
-<div id="profile-photostream">
+<div id="explore-photos">
   <% photos.each(function (photo) { %>
-    <img src="<%= photo.escape('url') %>" data-photo-id="<%= photo.id %>">
+    <img src="<%= photo.escape('url') %>" 
+      width="<%= photo.escape('width') %>" height="<%= photo.escape('height') %>">
   <% }) %>
 </div>
 

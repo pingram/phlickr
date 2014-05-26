@@ -1,0 +1,1 @@
+json.array! photos, partial: 'api/photos/sized_photo', as: :photo
