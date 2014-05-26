@@ -38,19 +38,14 @@ module Api::PhotosHelper
         break if photos_to_resize.empty?
         working_set << photos_to_resize.pop
 
-        # if !working_set.empty?
-          # needResizing = working_set.any? do |photo|
-            if working_set[-1].display_height != max_r_height
-              # max_r_height = 400
-              needResizing = true
-            end
-          # end
-        # end
+        if working_set[-1].display_height != max_r_height
+          needResizing = true
+        end
 
         resize_photos(working_set, max_r_height) if needResizing
         needResizing = false
 
-        total_width = 0
+        total_width = 10 * (working_set.length - 1)  # 10 is for the margin
         working_set.each do |photo|
           total_width += photo.display_width
         end
