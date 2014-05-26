@@ -12,8 +12,10 @@
 #  file_content_type :string(255)
 #  file_file_size    :integer
 #  file_updated_at   :datetime
-#  width             :integer
-#  height            :integer
+#  o_width           :integer
+#  o_height          :integer
+#  display_width     :integer
+#  display_height    :integer
 #
 
 class Photo < ActiveRecord::Base

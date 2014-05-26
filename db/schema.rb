@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20140526183643) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.integer  "width"
-    t.integer  "height"
+    t.integer  "o_width"
+    t.integer  "o_height"
+    t.integer  "display_width"
+    t.integer  "display_height"
   end
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
