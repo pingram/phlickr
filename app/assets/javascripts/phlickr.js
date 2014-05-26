@@ -16,6 +16,12 @@ $(document).ready(function(){
   Phlickr.initialize();
 });
 
+// $(window).scroll(function() {
+//    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+//        alert("near bottom!");
+//    }
+// });
+
 
 Backbone.CompositeView = Backbone.View.extend({
   addSubview: function (selector, subview) {

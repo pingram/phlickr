@@ -5,6 +5,9 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.collection = options.collection;
     this.listenTo(this.collection, 'add', this.render);
+
+    _.bindAll(this, 'checkScroll');
+    $(window).scroll(this.checkScroll);
   },
 
   events: {
@@ -16,12 +19,21 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
     var renderedContent = this.template({
       photos: this.collection
     });
-    this.$el.html(renderedContent);
+
+    this.$el.html(renderedContent); 
     return this;
   },
 
   more: function () {
     this.$('.more').html('loading...').attr('disabled', 'disabled');
     Phlickr.Routers.app_router.photoExplore();
+  },
+
+  checkScroll: function (event) {
+    if(($(window).scrollTop() + $(window).height() > $(document).height() - 400)
+      && (!Phlickr.Collections.explorePhotos.isLoading)) {
+      Phlickr.Collections.explorePhotos.isLoading = true;
+      this.more();
+    }
   }
 })

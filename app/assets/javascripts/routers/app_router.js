@@ -25,6 +25,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     if(!Phlickr.Collections.explorePhotos){
       Phlickr.Collections.explorePhotos = new Phlickr.Collections.ExplorePhotos;
       Phlickr.Collections.explorePhotos.page = 1;
+      Phlickr.Collections.explorePhotos.isLoading = false;
     }
     else {
       // increment the page
@@ -42,10 +43,12 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
             collection: Phlickr.Collections.explorePhotos
           });
           router._swapView(Phlickr.Views.photoExplore);
+
+          // TODO: isLoading should really update when the photos load
+          Phlickr.Collections.explorePhotos.isLoading = false;
         }
         else {
-          // router.$rootEl.html(Phlickr.Views.photoExplore.render().$el);
-          // installHandlers();
+          Phlickr.Collections.explorePhotos.isLoading = false;
         }
       },
       error: function() {
