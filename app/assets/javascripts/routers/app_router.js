@@ -20,6 +20,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     console.log("route to photo explore");
 
     var router = this;
+    // debugger
 
     if(!Phlickr.Collections.explorePhotos){
       Phlickr.Collections.explorePhotos = new Phlickr.Collections.ExplorePhotos;
@@ -34,15 +35,16 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
       'api/photos/explore/' + Phlickr.Collections.explorePhotos.page;
 
     Phlickr.Collections.explorePhotos.fetch({
-      add: true,
+      remove: false,
       success: function() {
         if (!Phlickr.Views.photoExplore) {
           Phlickr.Views.photoExplore = new Phlickr.Views.PhotoExplore({
             collection: Phlickr.Collections.explorePhotos
           });
+          router._swapView(Phlickr.Views.photoExplore);
         }
         else {
-          Phlickr.Views.photoExplore.render();
+          // Phlickr.Views.photoExplore.render();
         }
       },
       error: function() {

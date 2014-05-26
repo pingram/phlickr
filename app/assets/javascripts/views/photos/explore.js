@@ -4,6 +4,7 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
+    this.listenTo(this.collection, 'add', this.render);
   },
 
   events: {
@@ -11,6 +12,7 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    console.log('render photo explore');
     var renderedContent = this.template({
       photos: this.collection
     });

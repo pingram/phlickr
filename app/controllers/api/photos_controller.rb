@@ -20,7 +20,7 @@ class Api::PhotosController < ApplicationController
   # end
 
   def explore
-    @photos = get_explore_photos
+    @photos = get_explore_photos(params[:page_num])
 
     # @photos = Photo.find(:all, :order => "id desc", :limit => 2).reverse
     render partial: "api/photos/photos", locals: { photos: @photos }
