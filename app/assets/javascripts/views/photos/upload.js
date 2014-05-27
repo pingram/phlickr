@@ -1,5 +1,5 @@
 Phlickr.Views.PhotoUpload = Backbone.View.extend({
-  className: 'body-padded',
+  className: 'body-padded row',
   template: JST['photos/upload'],
 
   initialize: function () {
