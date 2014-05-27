@@ -21,6 +21,7 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent); 
+    installHandlers();
     return this;
   },
 
