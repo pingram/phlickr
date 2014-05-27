@@ -36,10 +36,7 @@ class Api::PhotosController < ApplicationController
     photo_id = Integer(params[:id])
     if photo_id > 1_000_000
       get_flickr_photo
-      @photo_user.save!
-      @photo.user = @photo_user    # TODO user Flickr user XXX
-      @photo.id = nil
-      @photo.save!
+      check_photo_and_user_existence   # updates photo and user based on db vals
     else
       @photo = Photo.find(photo_id)
     end
@@ -113,5 +110,21 @@ class Api::PhotosController < ApplicationController
       description: description)
     @photo_user = User.new(username: info['owner']['username'],
       fname: fname, lname: lname, password_digest: 'asdfasdf')
+  end
+
+  def check_photo_and_user_existence
+    if @photo.url == Photo.last.url       # already created in DB
+        @photo = Photo.last
+    else
+      user_from_db = User.find_by(username: @photo_user.username)
+      if !!user_from_db
+        @photo_user = user_from_db
+      else
+        @photo_user.save!
+      end
+      @photo.user = @photo_user
+      @photo.id = nil
+      @photo.save!
+    end
   end
 end

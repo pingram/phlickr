@@ -99,6 +99,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
   },
 
   changeFavoriteState: function (event) {
+    var view = this;
     event.preventDefault();
     var $star = this.$el.find('.photo-favorite-icon');
     var photo = this.model;
