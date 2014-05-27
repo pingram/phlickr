@@ -19,6 +19,7 @@
 //= require backbone
 //= require bootstrap
 //= require phlickr
+//= require jquery-fileupload/basic
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

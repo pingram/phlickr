@@ -27,6 +27,7 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'flickraw'
+gem "jquery-fileupload-rails"
 
 group :doc do
   gem 'sdoc', require: false
