@@ -26,6 +26,12 @@ class Api::PhotosController < ApplicationController
     render partial: "api/photos/sized_photos", locals: { photo_rows: @photo_rows }
   end
 
+  def favorites
+    @photos = current_user.favorited_photos
+
+    render partial: "api/photos/photos", locals: { photos: @photos }
+  end
+
 
   def index
     @user = User.find(params[:user_id])

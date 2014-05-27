@@ -11,10 +11,11 @@ def seed_image(file_name)
 end
 
 guest = User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
-User.create!(username: 'user2', password_digest: 'n/a', fname: 'User2', lname: 'U2lname')
+hahnbi = User.create!(username: 'hsun', password_digest: 'n/a', fname: 'Hahnbi', lname: 'Sun')
 
 album1 = Album.create!(user_id: guest.id, name: 'My first album!', description: 'album description...')
 album2 = Album.create!(user_id: guest.id, name: 'My second album!', description: 'album description2...')
+album3 = Album.create!(user_id: hahnbi.id, name: "Hahnbi's first album", description: 'album description3...')
 
 
 # photo_urls = []
@@ -34,6 +35,13 @@ photo_urls = [
   "http://been-seen.com/wp-content/uploads/Cool-Tent-Designs-We-Love-Main.jpg"
 ]
 
+photo_urls2 = [
+  "https://farm4.staticflickr.com/3733/14273811504_70e8b44fab_b.jpg",
+  "https://farm4.staticflickr.com/3740/14276682652_e3927c2729_b.jpg",
+  "https://farm4.staticflickr.com/3701/14250671936_d7e582e811_b.jpg",
+  "https://farm6.staticflickr.com/5235/14295537173_dbc08a7451_b.jpg"
+]
+
 photo_urls.each_with_index do |photo_url, i|
   new_photo = album1.photos.build(
     user_id: 1,
@@ -49,6 +57,16 @@ new_photo = album2.photos.build(
   # file: File.open(photo_url))
   url: "http://es.flash-screen.com/free-wallpaper/enchanting-landscape-picture-hd/cool-landscape-picture-hd,1366x768,56429.jpg")
 new_photo.save!
+
+photo_urls2.each_with_index do |photo_url, i|
+  new_photo = album3.photos.build(
+    user_id: 2,
+    description: "stock photo number #{i + 1}",
+    # file: File.open(photo_url))
+    url: photo_url)
+  new_photo.save!
+  FavoritePhoto.create!(user_id: guest.id, photo_id: new_photo.id)
+end
 
 # profile pic
 prof_pic1 = Photo.create!(

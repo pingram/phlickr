@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   has_many :photos
   has_many :albums
+  has_many :favorite_photos
+  has_many :favorited_photos, through: :favorite_photos, source: :photo
   belongs_to :profile_photo,
     class_name: "Photo",
     foreign_key: :profile_photo_id,

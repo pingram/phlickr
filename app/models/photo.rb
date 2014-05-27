@@ -25,6 +25,8 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   has_many :album_photos, inverse_of: :photo
   has_many :albums, through: :album_photos, source: :album, inverse_of: :photos
+  has_many :favorite_photos
+  has_many :users_who_favorited, through: :favorite_photos, source: :user
 
   # This method associates the attribute ":_photo" with a file attachment
   has_attached_file :file, {

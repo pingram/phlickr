@@ -9,11 +9,29 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     'profile': 'photostream',
     'photostream': 'photostream',
     'photos/explore': 'photoExplore',
+    'photos/favorites': 'photoFavorites',
     'photos/:id': 'photoShow',
     'upload': 'photoUpload',
     'albums': 'albumIndex',
     'albums/new': 'albumNew',
     'albums/:id': 'albumShow',
+  },
+
+  photoFavorites: function () {
+    var router = this;
+    var photos = new Phlickr.Collections.Photos();
+    photos.fetch({
+      url: 'api/photos/favorites'
+    });
+    // TODO: change this to a class method 2
+    Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
+      console.log('route to favorite photos');
+      var view = new Phlickr.Views.PhotoFavorites({
+        user: userModel,
+        collection: photos
+      });
+      router._swapView(view);
+    });
   },
 
   photoExplore: function () {
