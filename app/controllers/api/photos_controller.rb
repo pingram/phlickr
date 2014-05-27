@@ -33,11 +33,20 @@ class Api::PhotosController < ApplicationController
   end
 
   def change_favorite
-    @photo = Photo.find(params[:photo_id])
+    photo_id = Integer(params[:id])
+    if photo_id > 1_000_000
+      get_flickr_photo
+      @photo.user = current_user    # TODO user Flickr user XXX
+      @photo.id = nil
+      @photo.save!
+    else
+      @photo = Photo.find(photo_id)
+    end
+
     if current_user.favorited_photos.include?(@photo)
       current_user.favorited_photos.delete(@photo)
     else
-      FavoritePhoto.create!(user_id: current_user.id, photo_id: params[:photo_id])
+      FavoritePhoto.create!(user_id: current_user.id, photo_id: @photo.id)
     end
     render partial: "api/photos/photo_original",
       locals: { photo: @photo, current_user: current_user }
@@ -90,7 +99,7 @@ class Api::PhotosController < ApplicationController
     params.require(:photo).permit(:user_id, :description, :url, :file)
   end
 
-  def get_flickr_photo()
+  def get_flickr_photo
     FlickRaw.api_key = ENV["FLICKR_API_KEY"]
     FlickRaw.shared_secret = ENV["FLICKR_SECRET"]
     info = flickr.photos.getInfo(:photo_id => params[:id])

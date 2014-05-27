@@ -102,7 +102,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     event.preventDefault();
     var $star = this.$el.find('.photo-favorite-icon');
     var photo = this.model;
-    var data = { 'photo_id': photo.id };
+    var data = { 'id': photo.id };
 
     $.ajax({
       url: 'api/photos/change_favorite.json',
