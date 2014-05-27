@@ -34,16 +34,16 @@ module Api::PhotosHelper
   def size_photos_for_rows(photos, page_width, page_num)
     filename = Rails.root.join('lib/trailing_photos/tp_user_' +
       current_user.id.to_s + '.yaml')
-    if page_num == 1 && File.exist?(filename)
-      File.delete(filename)
-    end
+    # if page_num == 1 && File.exist?(filename)
+    #   File.delete(filename)
+    # end
 
     prev_photos = []
 
     # TODO: figure out why there are duplicates showing up with the saved file
-    if File.exist?(filename)
-      prev_photos = YAML.load_file(filename)
-    end
+    # if File.exist?(filename)
+    #   prev_photos = YAML.load_file(filename)
+    # end
 
     photos_to_resize = prev_photos + photos
     resized_photos = []
@@ -55,10 +55,10 @@ module Api::PhotosHelper
       total_width = 0
       loop do
         if photos_to_resize.empty?
-          if File.exist?(filename)
-            File.delete(filename)
-          end
-          File.write(filename, YAML.dump(working_set))
+          # if File.exist?(filename)
+          #   File.delete(filename)
+          # end
+          # File.write(filename, YAML.dump(working_set))
           working_set = []
           break
         end
