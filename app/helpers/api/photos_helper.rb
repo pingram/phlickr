@@ -20,13 +20,25 @@ module Api::PhotosHelper
       photos << get_photo_to_add(photo_hash, page_width)
     end
 
-    sized_photos = size_photos_for_rows(photos, page_width)
+    sized_photos = size_photos_for_rows(photos, page_width, page_num)
 
     sized_photos
   end
 
-  def size_photos_for_rows(photos, page_width)
-    photos_to_resize = photos
+  def size_photos_for_rows(photos, page_width, page_num)
+    filename = Rails.root.join('lib/trailing_photos_' +
+      current_user.id.to_s + '.yaml')
+    if page_num == 1 && File.exist?(filename)
+      File.delete(filename)
+    end
+
+    prev_photos = []
+
+    if File.exist?(filename)
+      prev_photos = YAML.load_file(filename)
+    end
+
+    photos_to_resize = prev_photos + photos
     resized_photos = []
 
     until photos_to_resize.empty?
@@ -35,7 +47,11 @@ module Api::PhotosHelper
       max_r_height = page_width / 3.4
       total_width = 0
       loop do
-        break if photos_to_resize.empty?
+        if photos_to_resize.empty?
+          File.write(filename, YAML.dump(working_set))
+          working_set = []
+          break
+        end
         working_set << photos_to_resize.pop
 
         if working_set[-1].display_height != max_r_height
@@ -55,9 +71,11 @@ module Api::PhotosHelper
         i += 1
       end
 
-      resized_row_photos = resize_row_photos(working_set, total_width, page_width)
-
-      resized_photos << resized_row_photos
+      if !working_set.empty?
+        resized_row_photos =
+          resize_row_photos(working_set, total_width, page_width)
+        resized_photos << resized_row_photos
+      end
     end
 
     resized_photos

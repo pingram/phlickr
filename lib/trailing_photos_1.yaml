@@ -1,0 +1,33 @@
+---
+- !ruby/object:Photo
+  attributes:
+    id: 14266348985
+    user_id: 
+    description: 
+    created_at: 
+    updated_at: 
+    url: https://farm3.staticflickr.com/2913/14266348985_29a11c30d0.jpg
+    file_file_name: 
+    file_content_type: 
+    file_file_size: 
+    file_updated_at: 
+    o_width: 500
+    o_height: 333
+    display_width: 585
+    display_height: 390
+- !ruby/object:Photo
+  attributes:
+    id: 14265290395
+    user_id: 
+    description: 
+    created_at: 
+    updated_at: 
+    url: https://farm6.staticflickr.com/5521/14265290395_67b34bc7c0.jpg
+    file_file_name: 
+    file_content_type: 
+    file_file_size: 
+    file_updated_at: 
+    o_width: 500
+    o_height: 333
+    display_width: 585
+    display_height: 390

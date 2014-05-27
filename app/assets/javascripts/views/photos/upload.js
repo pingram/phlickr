@@ -38,6 +38,9 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
 
   submit: function (event) {
     event.preventDefault();
+    $submitBtn = this.$el.find('input.btn');
+    $submitBtn.attr("disabled", "disabled").val('Uploading..');
+    $submitBtn.removeClass('btn-primary').addClass('btn-success');
     
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.set(attrs);

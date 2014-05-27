@@ -28,7 +28,6 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
 
     // add album id to modal delete button
     $('#confirm-delete').on('show.bs.modal', function(e) {
-      alert('hi');
       var albumId = $(e.relatedTarget).attr('data-album-id');
       $(this).find('.delete-album').attr('data-album-id', albumId);
     });
