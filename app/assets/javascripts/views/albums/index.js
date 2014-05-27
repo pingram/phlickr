@@ -4,7 +4,7 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.collection = options.collection;
     this.user = options.user;
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync remove', this.render);
 
     var userProfileView = new Phlickr.Views.UserProfile({
       model: this.user
@@ -27,9 +27,9 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
     this.renderSubviews();
 
     // add album id to modal delete button
-    $('#confirm-delete').on('show.bs.modal', function(e) {
+    this.$el.find('#confirm-delete').on('show.bs.modal', function(e) {
       var albumId = $(e.relatedTarget).attr('data-album-id');
-      $(this).find('.delete-album').attr('data-album-id', albumId);
+      $(this).find('.delete-album-confirm').attr('data-album-id', albumId);
     });
 
     return this;
@@ -44,22 +44,23 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
   },
 
   deleteAlbumConfirm: function (event) {
-    // debugger
     event.preventDefault();
-    // var album = this.model;
+    var albums = this.collection;
     
-    // needed to force modal removal from backboneXXX
+    // needed to force modal removal from backbone
     $('#confirm-delete').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
 
-    // photo.destroy({
-    //   success: function () {
-    //     console.log("photo " + photo.id + " deleted");
-    //   }
-    // });
-    // Backbone.history.history.back({
-    //   trigger: true
-    // })
+    var albumId = $(event.target).data('album-id')
+    var album = new Phlickr.Models.Album({ id: albumId });
+
+    album.destroy({
+      success: function () {
+        console.log("album " + album.id + " deleted");
+        debugger
+        albums.remove(album);
+      }
+    });
   }
 })

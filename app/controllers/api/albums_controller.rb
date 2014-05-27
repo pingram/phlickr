@@ -35,10 +35,11 @@ class Api::AlbumsController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   current_user.albums.find(params[:id]).try(:destroy)
-  #   render partial: "api/albums/album", locals: { album: @album }
-  # end
+  def destroy
+    @album = current_user.albums.find(params[:id])
+    @album.try(:destroy)
+    render partial: "api/albums/album", locals: { album: @album }
+  end
 
   private
   def album_params

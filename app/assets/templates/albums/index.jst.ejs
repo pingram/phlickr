@@ -2,14 +2,14 @@
 
 <!-- <div class="row"> -->
 <% albums.each(function(album) { %>
-  <a href="#albums/<%= album.id %>" class="album-container"
-    data-album-id="<%= album.id %>">
+  <a href="#albums/<%= album.id %>" class="album-container">
     <img src="<%= album.get('cover_photo').url %>"
       class="album-cover-photo">
     <p class="album-name"><%= album.escape('name') %></p>
     <p class="album-photo-count"># photos</p>
     <span class="album-delete-icon glyphicon glyphicon-remove"
-      data-toggle="modal" data-target="#confirm-delete">
+      data-toggle="modal" data-target="#confirm-delete"
+      data-album-id="<%= album.id %>">
     </span>
   </a>
 <% }) %>
