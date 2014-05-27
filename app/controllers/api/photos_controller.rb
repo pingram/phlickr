@@ -32,6 +32,17 @@ class Api::PhotosController < ApplicationController
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
 
+  def change_favorite
+    @photo = Photo.find(params[:photo_id])
+    if current_user.favorited_photos.include?(@photo)
+      current_user.favorited_photos.delete(@photo)
+    else
+      FavoritePhoto.create!(user_id: current_user.id, photo_id: params[:photo_id])
+    end
+    render partial: "api/photos/photo_original",
+      locals: { photo: @photo, current_user: current_user }
+  end
+
 
   def index
     @user = User.find(params[:user_id])
@@ -45,7 +56,8 @@ class Api::PhotosController < ApplicationController
     else  # it's a Flickr photo
       get_flickr_photo
     end
-    render partial: "api/photos/photo_original", locals: { photo: @photo }
+    render partial: "api/photos/photo_original",
+      locals: { photo: @photo, current_user: current_user }
   end
 
   def create

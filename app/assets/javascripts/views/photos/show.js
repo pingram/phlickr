@@ -18,7 +18,8 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     'click div.glyphicon-remove': 'closeView',
     'click button.delete-photo': 'deletePhoto',
     'click p.open-form': 'openForm',
-    'click #photo-show-holder': 'closeForm'
+    'click #photo-show-holder': 'closeForm',
+    'click .photo-favorite-icon': 'changeFavoriteState'
   },
 
   render: function() {
@@ -37,9 +38,17 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.$el.find('img.main-show-img').hide();
     this.renderSubviews();
+    this.updateFavoriteIcon();
     this.$('img.main-show-img').load(this.mainImageLoad);
-
     return this;
+  },
+
+  updateFavoriteIcon: function () {
+    // debugger
+    if (this.model.get('is_favorite')) {
+      this.$el.find('.photo-favorite-icon').removeClass('glyphicon-star-empty')
+        .addClass('glyphicon-star')
+    }
   },
 
   mainImageLoad: function () {
@@ -76,15 +85,37 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
 
   openForm: function (event) {
     event.preventDefault();
-    this.subviews()['.photo-description'][0].open = true;
-    this.renderSubviews();
+    if (this.model.get('user_id') === this.model.get('current_user_id')) {
+      this.subviews()['.photo-description'][0].open = true;
+      this.renderSubviews();
+    }
   },
 
   closeForm: function (event) {
-    event.preventDefault();
+    event.preventDefault();    
     this.submit();
     this.subviews()['.photo-description'][0].open = false;
     this.renderSubviews();
+  },
+
+  changeFavoriteState: function (event) {
+    event.preventDefault();
+    var $star = this.$el.find('.photo-favorite-icon');
+    var photo = this.model;
+    var data = { 'photo_id': photo.id };
+
+    $.ajax({
+      url: 'api/photos/change_favorite.json',
+      data: data,
+      success: function(resp) {
+        if ($star.hasClass('glyphicon-star-empty')) {
+          $star.removeClass('glyphicon-star-empty').addClass('glyphicon-star')
+        } else {
+          $star.removeClass('glyphicon-star').addClass('glyphicon-star-empty')
+        }
+      }
+    });
+
   },
 
   // TODO: add ability to press enter to have it update

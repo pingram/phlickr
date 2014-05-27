@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/* PHOTO SHOW VIEW */
+
 div#photo-show-holder {
   background: black;
   position: absolute;
@@ -27,19 +30,11 @@ div#photo-show-sidebar {
   z-index: 11;
 }
 
-
 img.main-show-img {
     position: absolute;
     top: 50%;
     left: 50%;
 }
-
-/*
-.img-container > img {
-  margin-top: -50%;
-  margin-left: -50%;
-}
-*/
 
 div.glyphicon-remove {
   color: #F1F8C1;
@@ -73,6 +68,12 @@ button[data-target="#confirm-delete"]:hover {
 
 form.photo-upload-form {
   top: 100px;
+}
+
+.photo-favorite-icon {
+  font-size: 30px;
+  cursor: pointer;
+  cursor: hand; /* needed for cross-browser support */
 }
 
 

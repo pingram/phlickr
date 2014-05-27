@@ -14,6 +14,7 @@ Phlickr::Application.routes.draw do
     # get "photos/explore", to: "photos#explore"
     get "photos/explore/:page_num", to: "photos#explore"
     get "photos/favorites", to: "photos#favorites"
+    get "photos/change_favorite", to: "photos#change_favorite"
     resources :users, only: [:show]
     resources :users, only: [] do
       resources :photos, only: [:index]

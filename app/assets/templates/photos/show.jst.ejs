@@ -13,12 +13,18 @@
   <div class="row">
     <div class="photo-description col-md-11 col-md-offset-1"></div>
   </div>
-  
+
   <div class="row">
-    <button class='col-md-offset-1 btn btn-link btn-lg' data-toggle="modal" data-target="#confirm-delete">
-      Delete
-    </button>
+    <span class="photo-favorite-icon glyphicon glyphicon-star-empty col-md-11 col-md-offset-1"></span>
   </div>
+  
+  <% if (photo.escape('user_id') === photo.escape('current_user_id')) { %>
+    <div class="row">
+      <button class='col-md-offset-1 btn btn-link btn-lg' data-toggle="modal" data-target="#confirm-delete">
+        Delete
+      </button>
+    </div>
+  <% } %>
 </div>
 
 
