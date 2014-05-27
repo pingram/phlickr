@@ -35,6 +35,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
       user: this.user
     });
     this.$el.html(renderedContent);
+    this.$el.find('img.main-show-img').hide();
     this.renderSubviews();
     this.$('img.main-show-img').load(this.mainImageLoad);
 
@@ -45,6 +46,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     var photo = $('.main-show-img')
     photo.css('margin-top', -photo.height() / 2);
     photo.css('margin-left', -photo.width() / 2);
+    photo.show();
   },
 
   closeView: function () {
