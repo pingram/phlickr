@@ -113,9 +113,21 @@ module Api::PhotosHelper
 
   def get_photo_to_add(photo_hash, page_width)
     id = photo_hash['id']
-    url = page_width > 1400 ? photo_hash['url_l'] : photo_hash['url_m']
-    width = page_width > 1400 ? photo_hash['width_l'] : photo_hash['width_m']
-    height = page_width > 1400 ? photo_hash['height_l'] : photo_hash['height_m']
+
+    if page_width < 1400 && (Integer(photo_hash['width_m']) > 300 &&
+                             Integer(photo_hash['height_m']) > 300)
+      url = photo_hash['url_m']
+      width = photo_hash['width_m']
+      height = photo_hash['height_m']
+    else
+      url = photo_hash['url_l']
+      width = photo_hash['width_l']
+      height = photo_hash['height_l']
+    end
+
+    # if id == '14250335136'
+    #   fail
+    # end
 
     Photo.new(id: id, url: url, o_width: width, o_height: height,
       display_width: width, display_height: height)
@@ -134,7 +146,7 @@ module Api::PhotosHelper
         :nojsoncallback => "1",
         :per_page => "#{page_size}",
         :page => "#{page_num}",
-        :extras => url
+        :extras => "url_l, url_m"
       }
     ).to_s
 
