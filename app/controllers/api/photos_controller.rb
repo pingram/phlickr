@@ -36,7 +36,8 @@ class Api::PhotosController < ApplicationController
     photo_id = Integer(params[:id])
     if photo_id > 1_000_000
       get_flickr_photo
-      @photo.user = current_user    # TODO user Flickr user XXX
+      @photo_user.save!
+      @photo.user = @photo_user    # TODO user Flickr user XXX
       @photo.id = nil
       @photo.save!
     else
@@ -110,5 +111,7 @@ class Api::PhotosController < ApplicationController
     description = info['title']
     @photo = Photo.new(id: Integer(params[:id]), url: url, #fname: fname, lname: lname,
       description: description)
+    @photo_user = User.new(username: info['owner']['username'],
+      fname: fname, lname: lname, password_digest: 'asdfasdf')
   end
 end
