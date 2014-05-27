@@ -1,15 +1,6 @@
 module Api::PhotosHelper
   def get_explore_photos(page_num, page_width)
-    page_width = Integer(page_width) - 40
-    # page_width = 1350         #TODO: return and update this XXX
-
-    page_num = Integer(page_num)
-    if page_num == 1
-      page_size = 20      #originally 50
-    else
-      page_size = 10
-      page_num += 1       #originally 4
-    end
+    page_width, page_num, page_size = get_page_variables(page_num, page_width)
 
     json_photos = get_json_photos(page_num, page_size, page_width)
 
@@ -25,8 +16,23 @@ module Api::PhotosHelper
     sized_photos
   end
 
+  def get_page_variables(page_num, page_width)
+    page_width = Integer(page_width) - 40
+    # page_width = 1350
+
+    page_num = Integer(page_num)
+    if page_num == 1
+      page_size = 20      #originally 50
+    else
+      page_size = 10
+      page_num += 1       #originally 4
+    end
+
+    [page_width, page_num, page_size]
+  end
+
   def size_photos_for_rows(photos, page_width, page_num)
-    filename = Rails.root.join('lib/trailing_photos_' +
+    filename = Rails.root.join('lib/trailing_photos/tp_user_' +
       current_user.id.to_s + '.yaml')
     if page_num == 1 && File.exist?(filename)
       File.delete(filename)
@@ -41,10 +47,6 @@ module Api::PhotosHelper
 
     photos_to_resize = prev_photos + photos
     resized_photos = []
-
-    if !prev_photos.empty?
-      # fail
-    end
 
     until photos_to_resize.empty?
       i = 0
@@ -106,10 +108,7 @@ module Api::PhotosHelper
       photo.display_height = photo.display_height / scaler
       photo.display_width = photo.display_width / scaler
     end
-
-    # if working_set.length > 2
-    #   fail
-    # end
+    working_set
   end
 
   def get_photo_to_add(photo_hash, page_width)
@@ -117,17 +116,6 @@ module Api::PhotosHelper
     url = page_width > 1400 ? photo_hash['url_l'] : photo_hash['url_m']
     width = page_width > 1400 ? photo_hash['width_l'] : photo_hash['width_m']
     height = page_width > 1400 ? photo_hash['height_l'] : photo_hash['height_m']
-    
-    # secret = photo_hash['secret']
-    # server_id = photo_hash['server']
-    # size = 'm'
-
-    # newPhotoUrl = Addressable::URI.new(
-    #   :scheme => "http",
-    #   :host => "farm#{photo_hash['farm']}.staticflickr.com",
-    #   :path => "#{server_id}/#{id}_#{secret}_#{size}.jpg"
-    # ).to_s
-    # fail
 
     Photo.new(id: id, url: url, o_width: width, o_height: height,
       display_width: width, display_height: height)
