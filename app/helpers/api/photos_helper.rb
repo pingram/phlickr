@@ -34,12 +34,17 @@ module Api::PhotosHelper
 
     prev_photos = []
 
+    # TODO: figure out why there are duplicates showing up with the saved file
     if File.exist?(filename)
       prev_photos = YAML.load_file(filename)
     end
 
     photos_to_resize = prev_photos + photos
     resized_photos = []
+
+    if !prev_photos.empty?
+      # fail
+    end
 
     until photos_to_resize.empty?
       i = 0
@@ -48,6 +53,9 @@ module Api::PhotosHelper
       total_width = 0
       loop do
         if photos_to_resize.empty?
+          if File.exist?(filename)
+            File.delete(filename)
+          end
           File.write(filename, YAML.dump(working_set))
           working_set = []
           break
