@@ -19,7 +19,16 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     'click button.delete-photo': 'deletePhoto',
     'click p.open-form': 'openForm',
     'click #photo-show-holder': 'closeForm',
+    'keypress': 'keypressFn',
+    'keyup': 'keypressFn',
     'click .photo-favorite-icon': 'changeFavoriteState'
+  },
+
+  keypressFn: function (event) {
+    if ((event.keyCode === 13 || event.keyCode === 27)
+        && this.subviews()['.photo-description'][0].open) {
+      this.closeForm(event);
+    }
   },
 
   render: function() {
@@ -44,7 +53,6 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
   },
 
   updateFavoriteIcon: function () {
-    // debugger
     if (this.model.get('is_favorite')) {
       this.$el.find('.photo-favorite-icon').removeClass('glyphicon-star-empty')
         .addClass('glyphicon-star')
@@ -88,6 +96,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     if (this.model.get('user_id') === this.model.get('current_user_id')) {
       this.subviews()['.photo-description'][0].open = true;
       this.renderSubviews();
+      this.$el.find('input.edit-description').focus();
     }
   },
 

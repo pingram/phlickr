@@ -32,7 +32,8 @@ Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
 
   checkScroll: function (event) {
     if(($(window).scrollTop() + $(window).height() > $(document).height() - 800)
-      && (!Phlickr.Collections.explorePhotos.isLoading)) {
+      && (Phlickr.Collections.explorePhotos &&
+        !Phlickr.Collections.explorePhotos.isLoading)) {
       Phlickr.Collections.explorePhotos.isLoading = true;
       this.more();
     }
