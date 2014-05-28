@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require jquery.ui.widget
+//= require tmpl
+//= require dropzone
 //= require underscore
 //= require serialize_json
 //= require notify.min
