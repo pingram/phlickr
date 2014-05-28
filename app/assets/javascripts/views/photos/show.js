@@ -111,8 +111,10 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
       success: function(resp) {
         if ($star.hasClass('glyphicon-star-empty')) {
           $star.removeClass('glyphicon-star-empty').addClass('glyphicon-star')
+          $.notify('Added to favorites', { className: 'success', position: 'bottom right' });
         } else {
           $star.removeClass('glyphicon-star').addClass('glyphicon-star-empty')
+          $.notify('Removed from favorites', { position: 'bottom right' });
         }
       }
     });

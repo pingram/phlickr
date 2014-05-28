@@ -16,6 +16,7 @@
 //= require jquery.ui.widget
 //= require underscore
 //= require serialize_json
+//= require notify.min
 //= require backbone
 //= require bootstrap
 //= require phlickr
