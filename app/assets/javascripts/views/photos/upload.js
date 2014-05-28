@@ -13,9 +13,7 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
   },
 
   submitDropzone: function (event) {
-    event.preventDefault();
-    // this.encodeFile();
-    this.submit();
+    Backbone.history.navigate('profile', { trigger: true });
   },
 
   render: function () {
@@ -26,36 +24,36 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     var dropzoneEl = this.$el.find('#my-awesome-dropzone')[0];
-    // debugger
 
     this.myDropzone = new Dropzone(dropzoneEl, {
       autoProcessQueue: false,
-      url: "/file/post",
+      url: "#",
       init: function(file) {
         this.on("addedfile", function(file) {
-          view.encodeFile(file);
+          view.encodeAndUpload(file);
         });
       }
     });
 
-    // $(dropzoneEl).addClass('dropzone');
+    $(dropzoneEl).addClass('dropzone');
 
-    // this.renderFileUploader();
     return this;
   },
 
-  encodeFile: function (file) {
+  encodeAndUpload: function (file) {
     var photo = this.model;
+    var view = this;
     // var file = event.currentTarget.files[0];
     // var file = this.myDropzone.files[0];
     
     console.log(file);
-    alert('encoded file');
+    // alert('encoded file');
     
     var reader = new FileReader();
     reader.onload = function(e) {
       console.log(e.target.result);
       photo.set({ photo: e.target.result });
+      view.savePhoto();
     }
     reader.onerror = function(stuff) {
       console.log("error", stuff)
@@ -64,7 +62,7 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     reader.readAsDataURL(file);
   },
 
-  submit: function (event) {
+  savePhoto: function (event) {
     // event.preventDefault();
     // $submitBtn = this.$el.find('input.btn');
     // $submitBtn.attr("disabled", "disabled").val('Uploading..');
@@ -72,11 +70,10 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     
     // var attrs = $('form').serializeJSON();
     // this.model.set(attrs);
-    debugger
+
     this.model.save(null, {
       success: function (attribute) {
         console.log("file uploaded successfully!");
-        Backbone.history.navigate('profile', { trigger: true });
       },
     });
   },
