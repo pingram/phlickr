@@ -8,12 +8,37 @@ User.create!([
   {username: "kkirby864", password_digest: "asdfasdf", session_token: "v-UdOS5r2pP5lPEP_pRA_g", fname: "Karen", lname: "Kirby", profile_photo_id: nil},
   {username: "finistere", password_digest: "asdfasdf", session_token: "dp30GDPAhMbSTglwHqJ3wA", fname: "Michael", lname: "Artz", profile_photo_id: nil},
   {username: "hsun", password_digest: "n/a", session_token: "nU19CMjfdL-BBuyhiuu4pw", fname: "Hahnbi", lname: "Sun", profile_photo_id: nil}
+  # {username: "Bhalalhaika", password_digest: "asdfasdf", session_token: "Rxkw-hbBJrpl6SZrk-m11Q", fname: "Mats", lname: "Anda", profile_photo_id: nil},
+  # {username: "Dorota.S - !", password_digest: "asdfasdf", session_token: "0k2Uyka-kaTbNjz8TbPhVA", fname: "Dorota", lname: nil, profile_photo_id: nil},
+  # {username: "ƿier", password_digest: "asdfasdf", session_token: "YR3aOSUFcWYyMNHViqu9Ew", fname: "Pier", lname: nil, profile_photo_id: nil},
+  # {username: "©Aspiazu Images 2014", password_digest: "asdfasdf", session_token: "bqz7ZyvHNtXfKCWkJWGPIA", fname: nil, lname: nil, profile_photo_id: nil},
+  # {username: "Arkadious", password_digest: "asdfasdf", session_token: "gWeRnx7U8zSgfphgtP9EEA", fname: "Arkadiusz", lname: nil, profile_photo_id: nil},
+  # {username: "justin burt", password_digest: "asdfasdf", session_token: "PfPm79tMBqO7TWk7CK-fLQ", fname: "justin", lname: "burt", profile_photo_id: nil},
+  # {username: "Svanny1982", password_digest: "asdfasdf", session_token: "_qCibtUG90SdBVjpng_5Tg", fname: nil, lname: nil, profile_photo_id: nil},
+  # {username: "motionid", password_digest: "asdfasdf", session_token: "KldmKhmLt07Fi7JOdtcGxw", fname: "Sean", lname: "Wood", profile_photo_id: nil},
+  # {username: "Ian Corban", password_digest: "asdfasdf", session_token: "XjVz0ddMHf2sDLDSt4C1dw", fname: "Ian", lname: "Corban", profile_photo_id: nil},
+  # {username: "m-louis", password_digest: "asdfasdf", session_token: "hQzX9WrowqDDJG095a6Zjw", fname: "takato", lname: "marui", profile_photo_id: nil},
+  # {username: "© pix&love", password_digest: "asdfasdf", session_token: "lksb-eDwKGdpzdURVTLfCg", fname: "luca", lname: nil, profile_photo_id: nil}
 ])
+
 Album.create!([
-  {user_id: 1, name: "cityscapes", description: "stills of the great  cities of the world"},
+  {user_id: 1, name: "City Life", description: "A portrait of the world."},
   {user_id: 1, name: "My second album!", description: "album description2..."},
   {user_id: 2, name: "Hahnbi's first album", description: "album description3..."}
 ])
+
+FavoritePhoto.create!([
+  {user_id: 1, photo_id: 3},
+  {user_id: 1, photo_id: 4},
+  {user_id: 1, photo_id: 5},
+  {user_id: 1, photo_id: 6},
+  {user_id: 1, photo_id: 7},
+  {user_id: 1, photo_id: 8},
+  {user_id: 1, photo_id: 9},
+  {user_id: 1, photo_id: 10},
+  {user_id: 1, photo_id: 11},
+])
+
 Photo.create!([
   {user_id: 1, description: "my profile picture", url: "https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "Blue lake", url: "http://www.wallsave.com/wallpapers/1024x640/smooking/34363/smooking-free-stock-p-os-images-part-34363.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
@@ -37,26 +62,4 @@ Photo.create!([
   {user_id: 1, description: "Selfoss Iceland", url: "https://farm6.staticflickr.com/5114/14098937919_c0f192aa8d_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "JRG+JRB", url: "https://farm4.staticflickr.com/3785/14096661038_22efebe5a6_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "San Pietro", url: "https://farm3.staticflickr.com/2926/14099696077_1e8a146b17_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
-])
-AlbumPhoto.create!([
-  {photo_id: 12, album_id: 1},
-  {photo_id: 17, album_id: 1},
-  {photo_id: 13, album_id: 1},
-  {photo_id: 18, album_id: 1},
-  {photo_id: 19, album_id: 1},
-  {photo_id: 21, album_id: 1},
-  {photo_id: 22, album_id: 1},
-  {photo_id: 16, album_id: 2},
-  {photo_id: 3, album_id: 3}
-])
-FavoritePhoto.create!([
-  {user_id: 1, photo_id: 3},
-  {user_id: 1, photo_id: 4},
-  {user_id: 1, photo_id: 5},
-  {user_id: 1, photo_id: 6},
-  {user_id: 1, photo_id: 7},
-  {user_id: 1, photo_id: 8},
-  {user_id: 1, photo_id: 9},
-  {user_id: 1, photo_id: 10},
-  {user_id: 1, photo_id: 11}
 ])
