@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'flickraw'
 gem "jquery-fileupload-rails"
+gem 'seed_dump'
 
 group :doc do
   gem 'sdoc', require: false

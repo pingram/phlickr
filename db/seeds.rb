@@ -1,82 +1,48 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!([
+  {username: "guest", password_digest: "n/a", session_token: "3pAYjFXzDIyfTQuAlmcT2Q", fname: "Guest", lname: "User", profile_photo_id: 1},
+  {username: "hsun", password_digest: "n/a", session_token: "nU19CMjfdL-BBuyhiuu4pw", fname: "Hahnbi", lname: "Sun", profile_photo_id: nil},
+  {username: "Jamie In Bytown", password_digest: "asdfasdf", session_token: "I0fWTgSfH_qafdzm7HhSmA", fname: "Jamie", lname: "McCaffrey", profile_photo_id: nil},
+  {username: "Danny VB", password_digest: "asdfasdf", session_token: "8BG5Zg0gdUvadTEVMeywDg", fname: nil, lname: nil, profile_photo_id: nil},
+  {username: "Michael Brandt Photography", password_digest: "asdfasdf", session_token: "QyJvEJWNU2uPoBN8PoF--g", fname: "Michael", lname: "Brandt", profile_photo_id: nil},
+  {username: "m.gregory91", password_digest: "asdfasdf", session_token: "Y6w-y28Ej2y5zGiaeSGiUQ", fname: "Michael", lname: "Gregory", profile_photo_id: nil},
+  {username: "Tucapel", password_digest: "asdfasdf", session_token: "YaUbpBeGJn-ctxi-mDM2dA", fname: nil, lname: nil, profile_photo_id: nil},
+  {username: "kkirby864", password_digest: "asdfasdf", session_token: "v-UdOS5r2pP5lPEP_pRA_g", fname: "Karen", lname: "Kirby", profile_photo_id: nil},
+  {username: "finistere", password_digest: "asdfasdf", session_token: "dp30GDPAhMbSTglwHqJ3wA", fname: "Michael", lname: "Artz", profile_photo_id: nil}
+])
 
-def seed_image(file_name)
-  File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}.jpg"))
+Album.create!([
+  {user_id: 1, name: "My first album!", description: "album description..."},
+  {user_id: 1, name: "My second album!", description: "album description2..."},
+  {user_id: 2, name: "Hahnbi's first album", description: "album description3..."}
+])
+
+Photo.create!([
+  {user_id: 1, description: "my profile picture", url: "https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 1, description: "Blue lake", url: "http://www.wallsave.com/wallpapers/1024x640/smooking/34363/smooking-free-stock-p-os-images-part-34363.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 2, description: "Barn in the mountains", url: "https://farm4.staticflickr.com/3701/14250671936_d7e582e811_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 4, description: "Walking to the Rocher Percé. Gaspésie. #1", url: "https://farm6.staticflickr.com/5528/14087246028_8bcef0274b_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 3, description: "Kayaking in the clouds.", url: "https://farm4.staticflickr.com/3740/14276682652_e3927c2729_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 5, description: "Kerry Park Moonrise", url: "https://farm3.staticflickr.com/2901/14277653074_438d452106_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 2, description: "City That Never Sleeps", url: "https://farm6.staticflickr.com/5235/14295537173_dbc08a7451_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 6, description: "Let Sleeping Owls Lie", url: "https://farm4.staticflickr.com/3733/14273811504_70e8b44fab_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 7, description: "sunset - Powell Point - Grand Canyon - 5-09-14  01", url: "https://farm3.staticflickr.com/2929/14272300182_1c2a7abdd3_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 8, description: "Sticks and Stones...", url: "https://farm6.staticflickr.com/5594/14270932402_ac259f23d2_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 9, description: "Kitty Portrait", url: "https://farm4.staticflickr.com/3750/14273400454_90fe2c5020_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
+])
+
+# AlbumPhoto.create!([
+#   {photo_id: 1, album_id: 1},
+#   {photo_id: 2, album_id: 1},
+#   {photo_id: 3, album_id: 1},
+#   {photo_id: 4, album_id: 1},
+#   {photo_id: 5, album_id: 1},
+#   {photo_id: 6, album_id: 2},
+#   {photo_id: 7, album_id: 3},
+#   {photo_id: 8, album_id: 3},
+#   {photo_id: 9, album_id: 3},
+#   {photo_id: 10, album_id: 3}
+# ])
+
+(3..11).each do |i|
+  FavoritePhoto.create!(user_id: 1, photo_id: i)
 end
-
-guest = User.create!(username: 'guest', password_digest: 'n/a', fname: 'Guest', lname: 'User')
-hahnbi = User.create!(username: 'hsun', password_digest: 'n/a', fname: 'Hahnbi', lname: 'Sun')
-
-album1 = Album.create!(user_id: guest.id, name: 'My first album!', description: 'album description...')
-album2 = Album.create!(user_id: guest.id, name: 'My second album!', description: 'album description2...')
-album3 = Album.create!(user_id: hahnbi.id, name: "Hahnbi's first album", description: 'album description3...')
-
-
-# photo_urls = []
-# seed_image_path = Rails.root.join("app/assets/images/seed")
-# general_seed_path = seed_image_path.join("general")
-# Dir.entries(general_seed_path).each do |item|
-#   next if item == '.' or item == '..'
-#   photo_urls << "#{general_seed_path + item}"
-# end
-
-photo_urls = [
-  "http://fc09.deviantart.net/fs71/i/2012/230/b/e/grassy_field_sunset___free_stock_by_kevron2001-d5blgkr.jpg",
-  "http://www.techiemania.com/wp-content/uploads/2010/09/freebie-images-free-stock-images-plugin.jpg",
-  "http://www.wallsave.com/wallpapers/1024x640/smooking/34363/smooking-free-stock-p-os-images-part-34363.jpg",
-  "http://static1.businessinsider.com/image/50185063eab8ea6802000002/apple-ceo-tim-cook-likes-these-7-beautiful-things.jpg",
-  "http://been-seen.com/wp-content/uploads/Cool-Tent-Designs-We-Love-Main.jpg"
-]
-
-photo_urls2 = [
-  "https://farm4.staticflickr.com/3733/14273811504_70e8b44fab_b.jpg",
-  "https://farm4.staticflickr.com/3740/14276682652_e3927c2729_b.jpg",
-  "https://farm4.staticflickr.com/3701/14250671936_d7e582e811_b.jpg",
-  "https://farm6.staticflickr.com/5235/14295537173_dbc08a7451_b.jpg"
-]
-
-photo_urls.each_with_index do |photo_url, i|
-  new_photo = album1.photos.build(
-    user_id: 1,
-    description: "stock photo number #{i + 1}",
-    # file: File.open(photo_url))
-    url: photo_url)
-  new_photo.save!
-end
-
-new_photo = album2.photos.build(
-  user_id: 1,
-  description: "stock photo number ???",
-  # file: File.open(photo_url))
-  url: "http://es.flash-screen.com/free-wallpaper/enchanting-landscape-picture-hd/cool-landscape-picture-hd,1366x768,56429.jpg")
-new_photo.save!
-
-photo_urls2.each_with_index do |photo_url, i|
-  new_photo = album3.photos.build(
-    user_id: 2,
-    description: "stock photo number #{i + 1}",
-    # file: File.open(photo_url))
-    url: photo_url)
-  new_photo.save!
-  FavoritePhoto.create!(user_id: guest.id, photo_id: new_photo.id)
-end
-
-# profile pic
-prof_pic1 = Photo.create!(
-  user_id: 1,
-  description: 'prof pic',
-  url: 'https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg')
-
-guest.profile_photo_id = prof_pic1.id
-guest.save!
-
-# Photo.create!(
-#     user_id: 2,
-#     description: "stock photo for user 2",
-#     url: photo_urls[0])
