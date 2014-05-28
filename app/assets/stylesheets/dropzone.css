@@ -62,6 +62,7 @@
 .dropzone-previews .dz-preview .dz-details .dz-filename {
   overflow: hidden;
   height: 100%;
+  color: black;
 }
 .dropzone .dz-preview .dz-details img,
 .dropzone-previews .dz-preview .dz-details img {
@@ -78,6 +79,7 @@
   left: 3px;
   height: 28px;
   line-height: 28px;
+  color: black;
 }
 .dropzone .dz-preview.dz-error .dz-error-mark,
 .dropzone-previews .dz-preview.dz-error .dz-error-mark {

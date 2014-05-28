@@ -35,6 +35,7 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
       }
     });
 
+    Dropzone.autoDiscover = false;
     $(dropzoneEl).addClass('dropzone');
 
     return this;
@@ -71,10 +72,10 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     // var attrs = $('form').serializeJSON();
     // this.model.set(attrs);
 
-    this.model.save(null, {
-      success: function (attribute) {
-        console.log("file uploaded successfully!");
-      },
-    });
+    // this.model.save(null, {
+    //   success: function (attribute) {
+    //     console.log("file uploaded successfully!");
+    //   },
+    // });
   },
 });
