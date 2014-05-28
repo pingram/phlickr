@@ -153,29 +153,29 @@ img.album-cover-photo {
   background-color: #D4D4D4;
   position: relative;
   height: 100px;
-  top: 30px;
-  left: 5%;
-  right: 5%;
-  width: 90%;
+  top: 20px;
+  left: 2%;
+  right: 2%;
+  width: 96%;
   padding: 5px;
 }
 
-// .user-picture-container ul {
-//   white-space: nowrap;
-// }
-
 .connected-sortable li {
-  display: inline-block;
+  float: left;
+  list-style-type: none;
 }
 
 .connected-sortable img {
   width: 90px;
   height: 90px;
+  vertical-align: baseline;
+  margin-right: 5px;
 }
 
 
 
 /* DELETE ALBUM BUTTON */
+
 .album-delete-icon {
   position: relative;
   top: -255px;
