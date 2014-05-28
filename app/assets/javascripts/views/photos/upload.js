@@ -33,7 +33,26 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
         $("#up_btn").on('click', function () {
             data.submit();
         });
+
+        data.context = $(tmpl("template-upload", file))
+        view.$el.append(data.context)
       },
+
+      // progressall: function (e, data) {
+      //   var progress = parseInt(data.loaded / data.total * 100, 10);
+      //   $('#progress .bar').css(
+      //       'width',
+      //       progress + '%'
+      //   );
+      // },
+
+      // progress: function (e, data) {
+      //   if (data.context) {
+      //     progress = parseInt(data.loaded / data.total * 100, 10)
+      //     data.context.find('.bar').css('width', progress + '%')
+      //   }
+      // },
+
       // done: function () {debugger},
       // send: function () {debugger},
       // start: function (e, data) {
@@ -41,6 +60,10 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
         
       // },
       submit: function (e, data) {
+        $submitBtn = view.$el.find('#up_btn');
+        $submitBtn.attr("disabled", "disabled").text('Uploading..');
+        // $submitBtn.removeClass('btn-primary').addClass('btn-defaut');
+
         var attrs = $('form').serializeJSON();
         photo.set(attrs);
 
@@ -80,7 +103,6 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     
     var attrs = $('form').serializeJSON();
     this.model.set(attrs);
-    debugger
 
     this.model.save(null, {
       success: function (attribute) {
