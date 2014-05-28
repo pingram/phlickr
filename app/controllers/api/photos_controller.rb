@@ -107,7 +107,9 @@ class Api::PhotosController < ApplicationController
     name = info['owner']['realname'].split(' ')
     fname = name[0]
     lname = name[1]
+    width = info
     description = info['title']
+    fail
     @photo = Photo.new(id: Integer(params[:id]), url: url, #fname: fname, lname: lname,
       description: description)
     @photo_user = User.new(username: info['owner']['username'],

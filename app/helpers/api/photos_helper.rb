@@ -125,10 +125,6 @@ module Api::PhotosHelper
       height = photo_hash['height_l']
     end
 
-    # if id == '14250335136'
-    #   fail
-    # end
-
     Photo.new(id: id, url: url, o_width: width, o_height: height,
       display_width: width, display_height: height)
   end

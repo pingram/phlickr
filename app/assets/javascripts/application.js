@@ -28,7 +28,6 @@
 //= require_tree ./routers
 //= require_tree .
 
-
 var installHandlers = function () {
   $('img[data-photo-id]').on('click', function (event) {
     var photoId = $(event.currentTarget).data('photo-id')
@@ -36,9 +35,3 @@ var installHandlers = function () {
     Backbone.history.navigate('photos/' + photoId, true)
   })
 };
-
-
-// // = require ../../../vendor/assets/javascripts/jQuery-File-Upload-master/js/jquery.iframe-transport.js
-// // = require ../../../vendor/assets/javascripts/jQuery-File-Upload-master/js/jquery.fileupload.js
-// // = require ../../../vendor/assets/javascripts/jQuery-File-Upload-master/js/jquery.fileupload-process.js
-// // = require ../../../vendor/assets/javascripts/jQuery-File-Upload-master/js/jquery.fileupload-ui.js
