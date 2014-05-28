@@ -1,5 +1,5 @@
 Phlickr.Views.PhotoExplore = Backbone.CompositeView.extend({
-  className: "body-padded",
+  className: "body-padded photo-explore-container",
   template: JST['photos/explore'],
 
   initialize: function (options) {

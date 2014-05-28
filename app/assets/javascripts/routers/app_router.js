@@ -52,7 +52,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     Phlickr.Collections.explorePhotos.url =
       'api/photos/explore/' + Phlickr.Collections.explorePhotos.page;
 
-    Phlickr.Collections.explorePhotos.pageWidth = $(document).width();
+    Phlickr.Collections.explorePhotos.pageWidth = $(window).width();
 
     Phlickr.Collections.explorePhotos.fetch({
       data: {

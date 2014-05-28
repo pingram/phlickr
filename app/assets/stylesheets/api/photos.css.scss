@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.bar {
-    height: 18px;
-    background: green;
-}
-
 
 /* PHOTO SHOW VIEW */
 
@@ -95,4 +90,8 @@ div.explore-photo-wrapper {
 
 div#explore-photos {
   margin-left: 25px;
+}
+
+div.explore-rows {
+  overflow-x: hidden;
 }
