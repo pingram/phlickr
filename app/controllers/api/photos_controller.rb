@@ -53,7 +53,9 @@ class Api::PhotosController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @photos = @user.photos.order(:id)
+    photo_ids = @user.photos.pluck(:id)         # TODO: only use one query here
+    photo_ids.delete(@user.profile_photo.id)
+    @photos = Photo.where(id: photo_ids).order(:id)
     render partial: "api/photos/photos", locals: { photos: @photos }
   end
 
