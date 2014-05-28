@@ -70,6 +70,7 @@ img.album-cover-photo {
   left: 0px;
   right: 0px;
   bottom: 0px;
+  overflow: hidden;
   // border: 3px solid red;
   padding: 0px;
 }
@@ -96,6 +97,16 @@ img.album-cover-photo {
 
 .new-album-sidebar {
   height: 100%;
+}
+
+.new-album-sidebar #album_name {
+  background-color: #FFFFD3;
+  font-size: 20px;
+}
+
+.new-album-sidebar textarea {
+  background-color: #FFFFD3;
+  font-size: 20px;
 }
 
 .new-album-drag-section {
@@ -141,7 +152,7 @@ img.album-cover-photo {
 .user-picture-container {
   background-color: #D4D4D4;
   position: relative;
-  height: 85px;
+  height: 100px;
   top: 30px;
   left: 5%;
   right: 5%;
@@ -158,8 +169,8 @@ img.album-cover-photo {
 }
 
 .connected-sortable img {
-  width: 75px;
-  height: 75px;
+  width: 90px;
+  height: 90px;
 }
 
 
