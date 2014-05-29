@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:guest]
-      user = User.find_by(username: 'guest')
+      user = User.find(1)
     else
       user = User.find_by_credentials(
       params[:user][:username],
