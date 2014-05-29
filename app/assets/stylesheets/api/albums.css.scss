@@ -134,15 +134,43 @@ img.album-cover-photo {
 
 #instruction-text-1 {
   color: #9C9C9C;
-  font-size: 33px;
   text-align: center;
 }
 
 #instruction-text-2 {
   position: relative;
   color: #9C9C9C;
-  font-size: 25px;
   text-align: center;
+}
+
+@media screen and (min-height: 400px) {
+  #instruction-text-1 {
+    font-size: 33px;
+  }
+
+  #instruction-text-2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  #instruction-text-1 {
+    font-size: 33px;
+  }
+
+  #instruction-text-2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-height: 800px) and (min-width: 1050px) {
+  #instruction-text-1 {
+    font-size: 45px;
+  }
+
+  #instruction-text-2 {
+    font-size: 32px;
+  }
 }
 
 .new-album-lower-pane {
