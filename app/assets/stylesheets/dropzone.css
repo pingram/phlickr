@@ -163,7 +163,7 @@
   background: rgba(0,0,0,0.03);
   background: #F0F0F0;
   padding: 23px;
-  top: 100px;
+/*  top: 100px;*/
   position: relative;
 /*  height: 300px;
   width: 500px;*/
@@ -401,4 +401,48 @@
   to {
     background-position: -7px -400px;
   }
+}
+
+/* CUSTOMIZATION */
+
+/*button.submit-dropzone {
+  top: 140px;
+  position: relative;
+}*/
+
+div#my-awesome-dropzone {
+  height: 500px;
+  /*position: relative;*/
+  border: 3px solid blue;
+}
+
+#dropbox-text {
+  font-size: 40px;
+  color: #9C9C9C;
+/*  position: absolute;
+  display: block;
+  width: 100%;*/
+  /*top: 40%;*/
+}
+
+#dropbox-text p, #dropbox-text2 p {
+  text-align: center;
+}
+
+#dropbox-text2 {
+  font-size: 22px;
+  color: #9C9C9C;
+/*  position: absolute;
+  display: block;
+  width: 100%;
+  top: 50%;*/
+}
+
+#full-dropzone {
+  position: relative;
+  display: block;
+  /*height: 500px;*/
+  /*width: 100%;*/
+  border: 3px solid green;
+  /*width: 60%;*/
 }
