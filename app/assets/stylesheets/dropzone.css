@@ -403,26 +403,19 @@
   }
 }
 
+
+
 /* CUSTOMIZATION */
-
-/*button.submit-dropzone {
-  top: 140px;
-  position: relative;
-}*/
-
-
 
 button.submit-dropzone {
   position: relative;
 }
 
 #dropbox-text {
-  font-size: 40px;
   color: #9C9C9C;
   position: absolute;
   display: block;
   width: 100%;
-  top: 40%;
 }
 
 #dropbox-text p, #dropbox-text2 p {
@@ -430,12 +423,10 @@ button.submit-dropzone {
 }
 
 #dropbox-text2 {
-  font-size: 22px;
   color: #9C9C9C;
   position: absolute;
   display: block;
-  width: 100%;
-  top: 50%;
+  width: 100%;  
 }
 
 
@@ -445,18 +436,34 @@ button.submit-dropzone {
     top: 150px;
   }
   button.submit-dropzone {
-    top: 190px;
-    position: relative;
+    top: 200px;
+    font-size: 22px;
+  }
+  #dropbox-text {
+    top: 370px;
+    font-size: 50px;
+  }
+  #dropbox-text2 {
+    top: 450px;
+    font-size: 26px;
   }
 }
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width: 1400px) {
   .dropzone {
     min-height: 360px;
     top: 100px;
   }
   button.submit-dropzone {
     top: 140px;
-    position: relative;
+    font-size: 18px;
+  }
+  #dropbox-text {
+    top: 275px;
+    font-size: 40px;
+  }
+  #dropbox-text2 {
+    top: 340px;
+    font-size: 22px;
   }
 }
