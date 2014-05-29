@@ -19,6 +19,7 @@ Phlickr.Views.Photostream = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.renderSubviews();
+
     return this;
   }
 })

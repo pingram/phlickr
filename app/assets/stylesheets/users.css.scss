@@ -54,11 +54,11 @@ h4#profile-username {
 
 /* background image setup */
 #cover-photo {
-  background: url(https://s.yimg.com/pw/images/coverphoto04_h.jpg.v2) no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-image: url(https://s.yimg.com/pw/images/coverphoto04_h.jpg.v2); 
+  -webkit-background-size: 2000px auto;
+  -moz-background-size: 2000px auto;
+  -o-background-size: 2000px auto;
+  background-size: 2000px auto;
   min-height: 100%;
   width: 100%;
   overflow: hidden;

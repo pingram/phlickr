@@ -36,3 +36,18 @@ var installHandlers = function () {
     Backbone.history.navigate('photos/' + photoId, true)
   })
 };
+
+// $(document).ready(function () {
+//   var $coverPhoto = $('#cover-photo');
+//   if ($coverPhoto !== []) {
+//     $coverPhoto.width(window.outerWidth);
+//   }
+// })
+
+
+// $(window).load(function () {
+//   var $coverPhoto = $('#cover-photo');
+//   if ($coverPhoto !== []) {
+//     $('div#cover-photo').css('background-size', window.outerWidth + 'px auto');
+//   }
+// })

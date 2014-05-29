@@ -20,6 +20,7 @@ Phlickr.Views.PhotoFavorites = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
     this.renderSubviews();
+
     return this;
   }
 })
