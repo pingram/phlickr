@@ -25,7 +25,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     });
     // TODO: change this to a class method 2
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
-      console.log('route to favorite photos');
       var view = new Phlickr.Views.PhotoFavorites({
         user: userModel,
         collection: photos
@@ -35,8 +34,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   photoExplore: function () {
-    console.log("route to photo explore");
-
     var router = this;
 
     if(!Phlickr.Collections.explorePhotos){
@@ -80,7 +77,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   albumNew: function () {
-    console.log('route to albumNew');
     var router = this;
 
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
@@ -102,7 +98,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     albums.fetch();
     // TODO: change this to a class method 2
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
-      console.log('route to albumIndex');
       var view = new Phlickr.Views.AlbumIndex({
         user: userModel,
         collection: albums
@@ -112,7 +107,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
-    console.log('route to album show');
     var router = this;
     var album = new Phlickr.Models.Album({ id: id });
     album.fetch({
@@ -129,7 +123,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     var router = this;
     // TODO: change this to a class method 2
     Phlickr.Models.User.prototype.getCurrentUser(function(userModel) {
-      console.log('route to user profile');
       var photos = new Phlickr.Collections.PhotostreamPhotos([], {
         userId: userModel.id
       });
@@ -146,7 +139,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     var photo = new Phlickr.Models.Photo({ id: id });
     var user = new Phlickr.Models.User();
     photo.fetch();
-    console.log('route to user profile');
     var view = new Phlickr.Views.PhotoShow({
       model: photo
     });
@@ -154,7 +146,6 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   },
 
   photoUpload: function () {
-    console.log('route to photo upload');
     var view = new Phlickr.Views.PhotoUpload();
     this._swapView(view);
   },

@@ -91,7 +91,7 @@ class Api::PhotosController < ApplicationController
 
   def destroy
     current_user.photos.find(params[:id]).try(:destroy)
-    render partial: "api/photos/photo", locals: { photo: @photo }
+    render json: Photo.new    # hack to prevent internal server errors when deleting
   end
 
   private

@@ -18,7 +18,6 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
 
   render: function () {
     var view = this;
-    console.log('render photo upload');
     var renderedContent = this.template({
       photo: this.model
     });
@@ -42,44 +41,28 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
   },
 
   encodeAndUpload: function (file) {
-
     var photo = this.model;
     var view = this;
 
     this.$el.find('#dropbox-text').fadeOut(1500);
     this.$el.find('#dropbox-text2').fadeOut(1500);
-    // var file = event.currentTarget.files[0];
-    // var file = this.myDropzone.files[0];
     
-    console.log(file);
-    // alert('encoded file');
+    // console.log(file);
     
     var reader = new FileReader();
     reader.onload = function(e) {
-      console.log(e.target.result);
+      // console.log(e.target.result);
       photo.set({ photo: e.target.result });
       view.savePhoto();
     }
     reader.onerror = function(stuff) {
-      console.log("error", stuff)
-      console.log (stuff.getMessage())
+      // console.log("error", stuff)
+      // console.log (stuff.getMessage())
     }
     reader.readAsDataURL(file);
   },
 
   savePhoto: function (event) {
-    // event.preventDefault();
-    // $submitBtn = this.$el.find('input.btn');
-    // $submitBtn.attr("disabled", "disabled").val('Uploading..');
-    // $submitBtn.removeClass('btn-primary').addClass('btn-success');
-    
-    // var attrs = $('form').serializeJSON();
-    // this.model.set(attrs);
-
-    this.model.save(null, {
-      success: function (attribute) {
-        console.log("file uploaded successfully!");
-      },
-    });
+    this.model.save();
   },
 });

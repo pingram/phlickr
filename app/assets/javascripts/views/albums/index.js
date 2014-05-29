@@ -57,8 +57,6 @@ Phlickr.Views.AlbumIndex = Backbone.CompositeView.extend({
 
     album.destroy({
       success: function () {
-        console.log("album " + album.id + " deleted");
-        debugger
         albums.remove(album);
       }
     });

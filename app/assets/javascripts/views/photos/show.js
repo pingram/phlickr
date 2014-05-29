@@ -32,8 +32,6 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    console.log('render photos/show')
-
     if (this.model.get('url') !== undefined && this.user.id === undefined) {
       this.user.set('id', this.model.get('user_id'));
       this.user.fetch();
@@ -81,11 +79,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
 
-    photo.destroy({
-      success: function () {
-        console.log("photo " + photo.id + " deleted");
-      }
-    });
+    photo.destroy();
     Backbone.history.history.back({
       trigger: true
     })
@@ -137,14 +131,7 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     if (newDescription !== this.model.get('description')) {
       this.model.set('description', newDescription);
 
-      this.model.save([], {
-        success: function () {
-          console.log('photo saved successfully to DB');
-        },
-        error: function () {
-          console.log('error saving photo to DB');
-        }
-      })
+      this.model.save();
     }
   }
 });
