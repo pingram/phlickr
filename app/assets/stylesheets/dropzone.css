@@ -157,13 +157,13 @@
 }
 .dropzone {
   border: 1px solid rgba(0,0,0,0.03);
-  min-height: 360px;
+  /*min-height: 360px;*/
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: rgba(0,0,0,0.03);
   background: #F0F0F0;
   padding: 23px;
-/*  top: 100px;*/
+  /*top: 100px;*/
   position: relative;
 /*  height: 300px;
   width: 500px;*/
@@ -410,19 +410,19 @@
   position: relative;
 }*/
 
-div#my-awesome-dropzone {
-  height: 500px;
-  /*position: relative;*/
-  border: 3px solid blue;
+
+
+button.submit-dropzone {
+  position: relative;
 }
 
 #dropbox-text {
   font-size: 40px;
   color: #9C9C9C;
-/*  position: absolute;
+  position: absolute;
   display: block;
-  width: 100%;*/
-  /*top: 40%;*/
+  width: 100%;
+  top: 40%;
 }
 
 #dropbox-text p, #dropbox-text2 p {
@@ -432,17 +432,31 @@ div#my-awesome-dropzone {
 #dropbox-text2 {
   font-size: 22px;
   color: #9C9C9C;
-/*  position: absolute;
+  position: absolute;
   display: block;
   width: 100%;
-  top: 50%;*/
+  top: 50%;
 }
 
-#full-dropzone {
-  position: relative;
-  display: block;
-  /*height: 500px;*/
-  /*width: 100%;*/
-  border: 3px solid green;
-  /*width: 60%;*/
+
+@media screen and (min-width: 1400px) {
+  .dropzone {
+    min-height: 500px;
+    top: 150px;
+  }
+  button.submit-dropzone {
+    top: 190px;
+    position: relative;
+  }
+}
+
+@media screen and (max-width:1400px) {
+  .dropzone {
+    min-height: 360px;
+    top: 100px;
+  }
+  button.submit-dropzone {
+    top: 140px;
+    position: relative;
+  }
 }

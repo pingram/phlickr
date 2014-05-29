@@ -22,6 +22,8 @@ gem 'serialize_json-rails'
 gem 'addressable'
 gem 'rest-client'
 # gem 'ruby-debug'
+# gem 'dalli'
+# gem 'memcachier'
 
 gem 'figaro'
 gem 'paperclip'
