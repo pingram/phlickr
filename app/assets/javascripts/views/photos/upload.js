@@ -42,8 +42,12 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
   },
 
   encodeAndUpload: function (file) {
+
     var photo = this.model;
     var view = this;
+
+    this.$el.find('#dropbox-text').fadeOut(1500);
+    this.$el.find('#dropbox-text2').fadeOut(1500);
     // var file = event.currentTarget.files[0];
     // var file = this.myDropzone.files[0];
     
@@ -72,10 +76,10 @@ Phlickr.Views.PhotoUpload = Backbone.View.extend({
     // var attrs = $('form').serializeJSON();
     // this.model.set(attrs);
 
-    // this.model.save(null, {
-    //   success: function (attribute) {
-    //     console.log("file uploaded successfully!");
-    //   },
-    // });
+    this.model.save(null, {
+      success: function (attribute) {
+        console.log("file uploaded successfully!");
+      },
+    });
   },
 });
