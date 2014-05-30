@@ -48,12 +48,16 @@ $(document).ready(function () {
       }
     });
 
-    Shepherd.mediator.on('photoStreamRendered', shepherd.next);
+    Shepherd.mediator.on('photostreamRendered', shepherd.next);
     Shepherd.mediator.on('albumIndexRendered', shepherd.next);
+    Shepherd.mediator.on('photoUploadRendered', shepherd.next);
+    Shepherd.mediator.on('albumNewRendered', shepherd.next);
+    Shepherd.mediator.on('photoFavoritesRendered', shepherd.next);
+    Shepherd.mediator.on('photoExploreRendered', shepherd.next);
 
     shepherd.addStep('welcome', {
       title: 'Welcome',
-      text: ['Please click next for a tour of the application or exit to play around on your own.'],
+      text: ['Click next for a tour of the application or exit to play around on your own.'],
       // attachTo: '.hero-welcome bottom',
       classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
       buttons: [
@@ -65,7 +69,6 @@ $(document).ready(function () {
           text: 'Next',
           action: function() {
             Backbone.history.navigate('#upload', { trigger: true });
-            shepherd.next();
           },
           classes: 'shepherd-button-example-primary'
         }
@@ -102,11 +105,31 @@ $(document).ready(function () {
         }, {
           text: 'Next',
           action: function () {
+            Backbone.history.navigate('#photos/favorites', { trigger: true });
+          }
+        }
+      ]
+    });
+
+    shepherd.addStep('favorites', {
+      title: 'Favorites',
+      text: 'Your favorites is a collection of all photos that you have ' +
+        'starred.',
+      attachTo: '#favorites-low-nav-link bottom',
+      buttons: [
+        {
+          text: 'Back',
+          classes: 'shepherd-button-secondary',
+          action: shepherd.back
+        }, {
+          text: 'Next',
+          action: function () {
             Backbone.history.navigate('#albums', { trigger: true });
           }
         }
       ]
     });
+
     shepherd.addStep('albums', {
       title: 'Albums',
       text: 'You can organize your photos into albums, which will be displayed here',
@@ -117,11 +140,52 @@ $(document).ready(function () {
           classes: 'shepherd-button-secondary',
           action: shepherd.back
         }, {
-          text: 'Done',
-          action: shepherd.next
+          text: 'Next',
+          action: function () {
+            Backbone.history.navigate('#albums/new', { trigger: true });
+          }
         }
       ]
     });
+
+    shepherd.addStep('newAlbums', {
+      title: 'New Albums',
+      text: 'To create new albums, simply drag and drop your photos listed ' +
+        'below into the center pane.',
+      attachTo: '#instruction-text-2 bottom',
+      buttons: [
+        {
+          text: 'Back',
+          classes: 'shepherd-button-secondary',
+          action: shepherd.back
+        }, {
+          text: 'Next',
+          action: function () {
+            Backbone.history.navigate('#photos/explore', { trigger: true });
+          }
+        }
+      ]
+    });
+
+    shepherd.addStep('explorePhotos', {
+      title: 'Explore Photos',
+      text: 'You can scroll through this page of photos, which is populated ' +
+        'with the most popular photos on Flickr. Try scrolling to the bottom,' +
+        'see if you can!',
+      attachTo: '#instruction-text-2 bottom',
+      buttons: [
+        {
+          text: 'Back',
+          classes: 'shepherd-button-secondary',
+          action: shepherd.back
+        }, {
+          text: 'Done',
+          classes: 'shepherd-button-secondary',
+          action: shepherd.cancel
+        }
+      ]
+    });
+
     shepherd.start();
 
   // tour = new Shepherd.Tour({

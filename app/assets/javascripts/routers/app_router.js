@@ -29,7 +29,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
         user: userModel,
         collection: photos
       });
-      router._swapView(view);
+      router._swapView(view, 'photoFavorites');
     });
   },
 
@@ -61,7 +61,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
           Phlickr.Views.photoExplore = new Phlickr.Views.PhotoExplore({
             collection: Phlickr.Collections.explorePhotos
           });
-          router._swapView(Phlickr.Views.photoExplore);
+          router._swapView(Phlickr.Views.photoExplore, 'photoExplore');
 
           // TODO: isLoading should really update when the photos load
           Phlickr.Collections.explorePhotos.isLoading = false;
@@ -88,7 +88,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
       var view = new Phlickr.Views.AlbumNew({
         collection: userPhotos
       });
-      router._swapView(view);
+      router._swapView(view, 'albumNew');
     });
   },
 
@@ -131,7 +131,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
         user: userModel,
         collection: photos
       });
-      router._swapView(view);
+      router._swapView(view, 'photostream');
     });
   },
 
@@ -147,7 +147,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
 
   photoUpload: function () {
     var view = new Phlickr.Views.PhotoUpload();
-    this._swapView(view);
+    this._swapView(view, 'photoUpload');
   },
 
   _swapView: function (view, viewType) {
@@ -173,6 +173,16 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   fireShepherdEvents: function (viewType) {
     if (viewType === 'albumIndex') {
       Shepherd.mediator.trigger('albumIndexRendered');
+    } else if (viewType === 'photostream') {
+      Shepherd.mediator.trigger('photostreamRendered');
+    } else if (viewType === 'photoUpload') {
+      Shepherd.mediator.trigger('photoUploadRendered');
+    } else if (viewType === 'albumNew') {
+      Shepherd.mediator.trigger('albumNewRendered');
+    } else if (viewType === 'photoFavorites') {
+      Shepherd.mediator.trigger('photoFavoritesRendered');
+    }  else if (viewType === 'photoExplore') {
+      Shepherd.mediator.trigger('photoExploreRendered');
     }
   }
 });
