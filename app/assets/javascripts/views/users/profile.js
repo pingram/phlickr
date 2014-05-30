@@ -12,6 +12,7 @@ Phlickr.Views.UserProfile = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     this.setWidth();
+    
     return this;
   },
 

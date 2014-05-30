@@ -25,6 +25,8 @@ Phlickr.Views.Photostream = Backbone.CompositeView.extend({
       Shepherd.mediator.trigger('photoStreamRendered');
     }
 
+    this.delegateEvents();
+
     return this;
   }
 })

@@ -34,7 +34,7 @@
 //= require_tree .
 
 var installHandlers = function () {
-  $('img[data-photo-id]').on('click', function (event) {
+  $('body').on('click', 'img[data-photo-id]', function (event) {
     var photoId = $(event.currentTarget).data('photo-id')
     Backbone.history.navigate('photos/' + photoId, true)
   })
