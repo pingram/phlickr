@@ -63,8 +63,9 @@ class User < ActiveRecord::Base
   end
 
   def ensure_profile_photo
-    if self.profile_photo == nil
-      self.profile_photo = Photo.find_by(description: "Default Profile Picture")
+    if self.profile_photo_id == nil
+      self.profile_photo_id = 24 # TODO: fix this
+      # self.profile_photo = Photo.find_by(description: "Default Profile Picture").id
     end
   end
 end

@@ -7,7 +7,8 @@ User.create!([
   {username: "Tucapel", password_digest: "asdfasdf", session_token: "YaUbpBeGJn-ctxi-mDM2dA", fname: nil, lname: nil, profile_photo_id: nil},
   {username: "kkirby864", password_digest: "asdfasdf", session_token: "v-UdOS5r2pP5lPEP_pRA_g", fname: "Karen", lname: "Kirby", profile_photo_id: nil},
   {username: "finistere", password_digest: "asdfasdf", session_token: "dp30GDPAhMbSTglwHqJ3wA", fname: "Michael", lname: "Artz", profile_photo_id: nil},
-  {username: "hsun", password_digest: "n/a", session_token: "nU19CMjfdL-BBuyhiuu4pw", fname: "Hahnbi", lname: "Sun", profile_photo_id: nil}
+  {username: "hsun", password_digest: "n/a", session_token: "nU19CMjfdL-BBuyhiuu4pw", fname: "Hahnbi", lname: "Sun", profile_photo_id: nil},
+  {username: "David Kingham", password_digest: "asdfasdf", session_token: "1Wk0jOVqmCL79yl297G_Tg", fname: "David", lname: "Kingham", profile_photo_id: nil}
 ])
 Album.create!([
   {user_id: 1, name: "cityscapes", description: "stills of the great  cities of the world"},
@@ -15,7 +16,7 @@ Album.create!([
   {user_id: 2, name: "Hahnbi's first album", description: "album description3..."}
 ])
 Photo.create!([
-  {user_id: 1, description: "my profile picture", url: "https://lh6.googleusercontent.com/-hG6KKKpZu5I/AAAAAAAAAAI/AAAAAAAAAAQ/w8Rn1YcX9A8/photo.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 1, description: "my profile picture", url: "https://s3.amazonaws.com/phlickr-all/dani2.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 2, description: "Barn in the mountains", url: "https://farm4.staticflickr.com/3701/14250671936_d7e582e811_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 4, description: "Walking to the Rocher Percé. Gaspésie. #1", url: "https://farm6.staticflickr.com/5528/14087246028_8bcef0274b_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 3, description: "Kayaking in the clouds.", url: "https://farm4.staticflickr.com/3740/14276682652_e3927c2729_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
@@ -36,7 +37,8 @@ Photo.create!([
   {user_id: 1, description: "10.22am sunday, this is why i get up early, to avoid the rush", url: "https://farm4.staticflickr.com/3713/14259181396_889d7ac369_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "Selfoss Iceland", url: "https://farm6.staticflickr.com/5114/14098937919_c0f192aa8d_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "Taxi Omotesando", url: "https://farm6.staticflickr.com/5538/14281097251_5d20a93c87_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
-  {user_id: 1, description: "San Pietro", url: "https://farm3.staticflickr.com/2926/14099696077_1e8a146b17_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
+  {user_id: 1, description: "San Pietro", url: "https://farm3.staticflickr.com/2926/14099696077_1e8a146b17_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
+  {user_id: 10, description: "Wahclella Falls", url: "https://farm6.staticflickr.com/5113/14113080137_d6cec1dbca_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
 ])
 
 Photo.create!(user_id: 1, description: "Default Profile Picture", url: "http://www.aklgamma.com/images/liboly/default_profile_image.png?1372871623")
@@ -50,7 +52,8 @@ AlbumPhoto.create!([
   {photo_id: 18, album_id: 1},
   {photo_id: 19, album_id: 1},
   {photo_id: 21, album_id: 1},
-  {photo_id: 2, album_id: 3}
+  {photo_id: 2, album_id: 3},
+  {photo_id: 23, album_id: 2}
 ])
 FavoritePhoto.create!([
   {user_id: 1, photo_id: 2},

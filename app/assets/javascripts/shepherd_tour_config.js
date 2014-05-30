@@ -24,7 +24,7 @@ var startShepherdTour = function () {
       {
         text: 'Exit',
         classes: 'shepherd-button-secondary',
-        action: shepherd.cancel
+        action: function () { endShepherdTour(shepherd) }
       }, {
         text: 'Next',
         action: function() {
@@ -142,10 +142,20 @@ var startShepherdTour = function () {
       }, {
         text: 'Done',
         classes: 'shepherd-button-secondary',
-        action: shepherd.cancel
+        action: function () { endShepherdTour(shepherd) }
       }
     ]
   });
 
   shepherd.start();
+}
+
+var endShepherdTour = function (shepherd) {
+  Shepherd.mediator.off('photostreamRendered');
+  Shepherd.mediator.off('albumIndexRendered');
+  Shepherd.mediator.off('photoUploadRendered');
+  Shepherd.mediator.off('albumNewRendered');
+  Shepherd.mediator.off('photoFavoritesRendered');
+
+  shepherd.cancel();
 }
