@@ -36,6 +36,9 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
   photoExplore: function () {
     var router = this;
 
+    var spinner = new Spinner().spin();
+    this.$rootEl.html(spinner.el);
+
     if(!Phlickr.Collections.explorePhotos){
       Phlickr.Collections.explorePhotos = new Phlickr.Collections.ExplorePhotos;
       Phlickr.Collections.explorePhotos.page = 1;

@@ -21,6 +21,7 @@
 //= require notify.min
 //= require shepherd.min
 //= require shepherd_tour_config
+//= require spin.min
 //= require backbone
 //= require bootstrap
 //= require phlickr
