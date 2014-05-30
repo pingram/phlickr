@@ -102,7 +102,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
         user: userModel,
         collection: albums
       });
-      router._swapView(view);
+      router._swapView(view, 'albumIndex');
     });
   },
 
@@ -150,7 +150,7 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  _swapView: function (view) {
+  _swapView: function (view, viewType) {
     this.cleanupExplore(view);
     if (this._currentView) {
       this._currentView.remove();
@@ -158,6 +158,8 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
     installHandlers();
+    this.fireShepherdEvents(viewType);           // for working with shepherd.js
+    
   },
 
   cleanupExplore: function (view) {
@@ -165,6 +167,12 @@ Phlickr.Routers.AppRouter = Backbone.Router.extend({
       Phlickr.Views.photoExplore.remove();
       delete Phlickr.Views['photoExplore'];
       delete Phlickr.Collections['explorePhotos'];
+    }
+  },
+
+  fireShepherdEvents: function (viewType) {
+    if (viewType === 'albumIndex') {
+      Shepherd.mediator.trigger('albumIndexRendered');
     }
   }
 });

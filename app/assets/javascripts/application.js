@@ -49,6 +49,7 @@ $(document).ready(function () {
     });
 
     Shepherd.mediator.on('photoStreamRendered', shepherd.next);
+    Shepherd.mediator.on('albumIndexRendered', shepherd.next);
 
     shepherd.addStep('welcome', {
       title: 'Welcome',
@@ -100,14 +101,16 @@ $(document).ready(function () {
           action: shepherd.back
         }, {
           text: 'Next',
-          action: shepherd.next
+          action: function () {
+            Backbone.history.navigate('#albums', { trigger: true });
+          }
         }
       ]
     });
-    shepherd.addStep('followup', {
-      title: 'Learn more',
-      text: 'Star Shepherd on Github so you remember it for your next project',
-      // attachTo: '.hero-followup bottom',
+    shepherd.addStep('albums', {
+      title: 'Albums',
+      text: 'You can organize your photos into albums, which will be displayed here',
+      attachTo: '#albums-low-nav-link bottom',
       buttons: [
         {
           text: 'Back',
