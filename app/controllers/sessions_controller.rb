@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
       login(user)
       session[:has_toured] = false
       redirect_to root_url
-      # render :js => "startShepherdTour();"
     else
       flash.now[:errors] = ["Invalid username or password"]
       render :new, status: 401

@@ -38,6 +38,9 @@ Photo.create!([
   {user_id: 1, description: "Taxi Omotesando", url: "https://farm6.staticflickr.com/5538/14281097251_5d20a93c87_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil},
   {user_id: 1, description: "San Pietro", url: "https://farm3.staticflickr.com/2926/14099696077_1e8a146b17_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
 ])
+
+Photo.create!(user_id: 1, description: "Default Profile Picture", url: "http://www.aklgamma.com/images/liboly/default_profile_image.png?1372871623")
+
 AlbumPhoto.create!([
   {photo_id: 11, album_id: 1},
   {photo_id: 12, album_id: 1},

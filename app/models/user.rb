@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :session_token, :presence => true, :uniqueness => true
   validates :username, uniqueness: true
 
-  before_validation :ensure_session_token
+  before_validation :ensure_session_token, :ensure_profile_photo
 
   has_many :photos
   has_many :albums
@@ -60,5 +60,11 @@ class User < ActiveRecord::Base
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def ensure_profile_photo
+    if self.profile_photo == nil
+      self.profile_photo = Photo.find_by(description: "Default Profile Picture")
+    end
   end
 end
