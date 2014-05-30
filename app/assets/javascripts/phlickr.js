@@ -8,6 +8,7 @@ window.Phlickr = {
     Phlickr.Routers.app_router = new Phlickr.Routers.AppRouter({
       $rootEl: $('#content')
     });
+    Shepherd.mediator = new Shepherd.Evented;
     Backbone.history.start({ })//pushState: true });
   }
 };
