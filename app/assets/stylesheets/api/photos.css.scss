@@ -5,6 +5,10 @@
 
 /* PHOTO SHOW VIEW */
 
+// div.photo-show-view {
+//   overflow-y: hidden;
+// }
+
 div#photo-show-holder {
   background: black;
   position: absolute;
@@ -34,6 +38,8 @@ img.main-show-img {
     position: absolute;
     top: 50%;
     left: 50%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 div.glyphicon-remove {

@@ -1,4 +1,6 @@
 Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
+  className: 'photo-show-view',
+  
   initialize: function (options) {
     this.model = options.model;
     this.user = new Phlickr.Models.User();
@@ -42,11 +44,19 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
       photo: this.model,
       user: this.user
     });
+
     this.$el.html(renderedContent);
+    var that = this;
+
+    var spinner = new Spinner().spin();
+    // debugger
+    this.$el.append(spinner.el);
     this.$el.find('img.main-show-img').hide();
     this.renderSubviews();
     this.updateFavoriteIcon();
-    this.$('img.main-show-img').load(this.mainImageLoad);
+    this.$('img.main-show-img').load(function () {
+      that.mainImageLoad(spinner);
+    });
     return this;
   },
 
@@ -57,10 +67,11 @@ Phlickr.Views.PhotoShow = Backbone.CompositeView.extend({
     }
   },
 
-  mainImageLoad: function () {
+  mainImageLoad: function (spinner) {
     var photo = $('.main-show-img')
     photo.css('margin-top', -photo.height() / 2);
     photo.css('margin-left', -photo.width() / 2);
+    spinner.stop();
     photo.show();
   },
 
