@@ -8,3 +8,8 @@
   color: inherit; }*/
 .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button {
   background: #55a892; }
+
+/* place it just above the spinner */
+div.shepherd-step {
+  z-index: 2000000001;
+}
