@@ -41,7 +41,7 @@ Photo.create!([
   {user_id: 10, description: "Wahclella Falls", url: "https://farm6.staticflickr.com/5113/14113080137_d6cec1dbca_b.jpg", file_file_name: nil, file_content_type: nil, file_file_size: nil, file_updated_at: nil, o_width: nil, o_height: nil, display_width: nil, display_height: nil}
 ])
 
-Photo.create!(user_id: 1, description: "Default Profile Picture", url: "http://www.aklgamma.com/images/liboly/default_profile_image.png?1372871623")  
+Photo.create!(user_id: 2, description: "Default Profile Picture", url: "http://www.aklgamma.com/images/liboly/default_profile_image.png?1372871623")  
 
 AlbumPhoto.create!([
   {photo_id: 11, album_id: 1},
