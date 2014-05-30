@@ -4,7 +4,7 @@ var startShepherdTour = function () {
   shepherd = new Shepherd.Tour({
     defaults: {
       classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
-      showCancelLink: true
+      // showCancelLink: true       // TODO: get this link working
     }
   });
 
@@ -24,7 +24,9 @@ var startShepherdTour = function () {
       {
         text: 'Exit',
         classes: 'shepherd-button-secondary',
-        action: function () { endShepherdTour(shepherd) }
+        action: function () {
+          endShepherdTour(shepherd);
+        }
       }, {
         text: 'Next',
         action: function() {
@@ -142,7 +144,9 @@ var startShepherdTour = function () {
       }, {
         text: 'Done',
         classes: 'shepherd-button-secondary',
-        action: function () { endShepherdTour(shepherd) }
+        action: function () {
+          endShepherdTour(shepherd);
+        }
       }
     ]
   });
